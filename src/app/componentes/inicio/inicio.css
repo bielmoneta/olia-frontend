@@ -1,0 +1,119 @@
+/* Estilo do container principal */
+.inicio-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* 1. Seção Heroi */
+.secao-heroi {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.secao-heroi h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.secao-heroi p {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 450px;
+}
+
+.secao-icones {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.icone-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #555;
+}
+
+.icone-item img {
+  height: 80px;
+  margin-bottom: 10px;
+  opacity: 0.7;
+}
+
+.icone-item span {
+  font-size: 1rem;
+}
+
+.secao-perfis {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+}
+
+.cartao-perfil {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 24px 32px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  text-align: left;
+  color: white;
+}
+
+.cartao-perfil:hover {
+  transform: translateY(-5px);
+}
+
+.cartao-perfil .icone-container {
+  margin-right: 24px;
+}
+
+.cartao-perfil .icone-container img {
+  height: 40px;
+  width: 40px;
+}
+
+.cartao-perfil .texto-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.cartao-perfil .texto-container strong {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.cartao-perfil .texto-container span {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.cartao-perfil.cartao-usuario,
+.cartao-perfil.cartao-escola {
+  background-color: #8bc34a;
+}
+
+.cartao-perfil.cartao-usuario:hover,
+.cartao-perfil.cartao-escola:hover {
+  background-color: #7cb342;
+}
+
+.cartao-perfil.cartao-governo {
+  background-color: #004d40;
+}
+
+.cartao-perfil.cartao-governo:hover {
+  background-color: #003a30;
+}

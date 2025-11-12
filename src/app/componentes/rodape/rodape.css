@@ -1,0 +1,16 @@
+.olia-rodape {
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 30px;
+}
+
+.olia-rodape a {
+  color: #555;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.olia-rodape a:hover {
+  text-decoration: underline;
+}
