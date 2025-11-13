@@ -1,0 +1,185 @@
+.pagina-login {
+  min-height: 100vh;
+  background-color: #fcfbf8;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  color: #333;
+}
+
+.cabecalho-login {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+.botao-voltar {
+  text-decoration: none;
+  font-size: 1rem;
+  color: #004d40;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.logo-olia{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  color: #004d40;
+}
+
+.logo-olia img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.conteudo-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.area-titulo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.avatar-usuario {
+  width: 80px;
+  height: 75px;
+  background-color: #257e2a;
+  border-radius: 50%;
+  margin: 0 auto 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-usuario img {
+  width: 60px;
+  height: 70px;
+  opacity: 0.8;
+}
+
+.area-titulo h2 {
+  color: #004d40;
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+.area-titulo p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.card-login {
+  background: white;
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+label {
+  display: block;
+  color: #004d40;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  margin-top: 15px;
+}
+
+.campo-input {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 12px 15px;
+}
+
+.icone-campo {
+  margin-right: 10px;
+  color: #888;
+  font-size: 1.2rem;
+}
+
+.icone-campo img {
+  width: 24px;
+  height: auto;
+  opacity: 1;
+}
+
+.campo-input input {
+  border: none;
+  background: transparent;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #555;
+}
+
+.esqueci-senha {
+  text-align: right;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+
+.esqueci-senha a {
+  color: #558b2f;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.btn-entrar {
+  background-color: #689f38;
+  color: white;
+  border: none;
+}
+
+.btn-entrar:hover {
+  background-color: #558b2f;
+}
+
+.divisoria {
+  text-align: center;
+  margin: 25px 0;
+  border-top: 1px solid #eee;
+  position: relative;
+}
+
+.divisoria span {
+  background-color: white;
+  padding: 0 10px;
+  color: #888;
+  font-size: 0.85rem;
+  position: relative;
+  top: -10px; /* puxa o texto para cima da linha */
+}
+
+.btn-cadastrar {
+  background-color: white;
+  border: 2px solid #689f38;
+  color: #004d40;
+}
+
+.btn-cadastrar:hover {
+  background-color: #f1f8e9;
+}
