@@ -1,3 +1,7 @@
 <footer class="olia-rodape">
-  <a href="#">Saiba mais sobre o projeto OLIA</a>
+  <a (click)="abrirModal()">Saiba mais sobre o projeto OLIA</a>
 </footer>
+
+@if (mostrarModal) {
+  <app-modal (eventoFechar)="abrirModal()"></app-modal>
+}
