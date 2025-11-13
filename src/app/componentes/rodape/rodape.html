@@ -1,7 +1,10 @@
-<footer class="olia-rodape">
-  <a (click)="abrirModal()">Saiba mais sobre o projeto OLIA</a>
-</footer>
+@if (isPaginaInicial()) {
 
-@if (mostrarModal) {
-  <app-modal (eventoFechar)="abrirModal()"></app-modal>
+  <footer class="olia-rodape">
+    <a (click)="abrirModal()">Saiba mais sobre o projeto OLIA</a>
+  </footer>
+
+  @if (mostrarModal) {
+    <app-modal (eventoFechar)="abrirModal()"></app-modal>
+  }
 }
