@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { Cabecalho } from "./componentes/cabecalho/cabecalho";
 import { Inicio } from "./componentes/inicio/inicio";
 import { Rodape } from "./componentes/rodape/rodape";
+import { Modal } from "./componentes/modal/modal";
 
 @Component({
   selector: 'app-root',
