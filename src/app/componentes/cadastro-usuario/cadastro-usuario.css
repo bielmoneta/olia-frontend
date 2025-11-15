@@ -1,0 +1,176 @@
+.pagina-cadastro {
+  min-height: 100vh;
+  background-color: #fcfbf8;
+  padding-bottom: 40px;
+  font-family: Poppins, sans-serif;
+}
+
+.conteudo-central {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.area-titulo {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #004d40;
+}
+
+.icon-usuario {
+  width: 90px;
+  height: 90px;
+  background-color: #1f9228;
+  border-radius: 50%;
+  margin: 0 auto 15px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-usuario img {
+  width: 80px;
+  height: 75px;
+}
+
+.card-cadastro {
+  background: white;
+  width: 100%;
+  max-width: 700px;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.titulo-secao {
+  color: #006064;
+  font-size: 1.7rem;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.separador {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 25px 0;
+}
+
+label {
+  display: block;
+  color: #004d40;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  margin-top: 10px;
+}
+
+.campo-input {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 12px 15px;
+  margin-bottom: 5px;
+}
+
+.icone-campo {
+  margin-right: 10px;
+  opacity: 0.5;
+}
+
+.campo-input .icone-campo-usuario img {
+  width: 30px;
+  height: 30px;
+}
+
+.campo-input .icone-campo-telefone img {
+  width: 30px;
+  height: 30px;
+}
+
+.campo-input .icone-campo-endereco img {
+  width: 30px;
+  height: 30px;
+}
+
+.campo-input .icone-campo-email img {
+  width: 30px;
+  height: 30px;
+}
+
+.campo-input input {
+  border: none;
+  background: transparent;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #555;
+}
+
+.linha-dupla {
+  display: flex;
+  gap: 20px;
+}
+
+.campo-metade {
+  width: 100%; /* Faz cada metade ocupar o espaço disponível */
+}
+
+.caixa-bolsa-familia {
+  background-color: #fffde7;
+  border: 1px solid #fff9c4;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  align-items: flex-start; /* Alinha no topo */
+  gap: 12px;
+}
+
+.caixa-bolsa-familia input[type="checkbox"] {
+  width: 20px; height: 20px;
+  margin-top: 3px;
+  accent-color: #004d40; /* Cor do check quando marcado */
+}
+
+.label-checkbox {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  cursor: pointer;
+}
+
+.label-checkbox span {
+  font-weight: normal;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.btn-cadastro {
+  width: 100%;
+  padding: 16px;
+  background-color: #689f38; /* Verde OLIA */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 30px;
+  transition: background 0.2s;
+}
+
+.btn-cadastro:hover {
+  background-color: #558b2f;
+}
+
+/* Responsivo*/
+@media (max-width: 600px) {
+  .linha-dupla {
+    flex-direction: column;
+    gap: 0;
+  }
+  .card-cadastro {
+    padding: 20px;
+  }
+}
