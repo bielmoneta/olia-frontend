@@ -1,8 +1,8 @@
 <header class="olia-cabecalho" [class.alinhado-esquerda]="isPaginaLogin()">
 
   @if (isPaginaLogin()) {
-    <a routerLink="/" class="botao-voltar">
-      <span class="seta"><img src="assets/imagens/icon-setavoltar.png" alt=""></span>
+    <a (click)="voltar()" class="botao-voltar" style="cursor: pointer;">
+      <span class="seta"><img src="assets/imagens/icon-setavoltar.png" alt="Seta Voltar"></span>
     </a>
   }
 
