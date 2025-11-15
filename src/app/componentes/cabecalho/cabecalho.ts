@@ -26,18 +26,30 @@ export class Cabecalho {
     // ele volta para o login de usuário.
     this.router.navigate(['/login-usuario']);
     }
-
   //  Se estiver na página de login de usuário
     else if (urlAtual === '/login-usuario') {
     // ele volta para o inicio
     this.router.navigate(['/']);
     }
-
     // TODO: adicionar regras para escola e governo)
-
-      // Para qualquer outro caso
+    // Para qualquer outro caso
       else {
     this.location.back();
       }
     }
+
+  isPaginaApp(): boolean {
+    const url = this.router.url;
+    return url.includes('/mapa-usuario') || url.includes('/perfil-usuario') || url.includes('/historico-usuario') || url.includes('/recompensa-usuario');
+  }
+
+  isLogado(): boolean {
+    return sessionStorage.getItem('usuarioLogado') === 'true';
+  }
+
+  fazerLogout() {
+    // Limpa o login
+    sessionStorage.removeItem('usuarioLogado');
+    this.router.navigate(['/']);
+  }
 }
