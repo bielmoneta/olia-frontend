@@ -1,3 +1,15 @@
 <app-cabecalho></app-cabecalho>
+
 <router-outlet></router-outlet>
-<app-rodape></app-rodape>
+
+@if (isPaginaInicial()) {
+  <app-rodape></app-rodape>
+}
+
+@if (isPaginaApp()) {
+  <app-rodape-usuario></app-rodape-usuario>
+}
+
+@if (isLogado()) {
+  <app-rodape-usuario></app-rodape-usuario>
+}
