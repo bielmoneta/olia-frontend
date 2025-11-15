@@ -1,7 +1,7 @@
 .pagina-login {
   min-height: 100vh;
   background-color: #fcfbf8;
-  font-family: 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: #333;
 }
 
@@ -47,9 +47,9 @@
 }
 
 .avatar-usuario {
-  width: 80px;
-  height: 75px;
-  background-color: #257e2a;
+  width: 90px;
+  height: 90px;
+  background-color: #1f9228;
   border-radius: 50%;
   margin: 0 auto 20px auto;
   display: flex;
@@ -58,8 +58,8 @@
 }
 
 .avatar-usuario img {
-  width: 60px;
-  height: 70px;
+  width: 85px;
+  height: 75px;
   opacity: 0.8;
 }
 
