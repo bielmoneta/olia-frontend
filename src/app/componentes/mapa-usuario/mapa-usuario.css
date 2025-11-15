@@ -1,0 +1,36 @@
+.pagina-mapa {
+  /* O truque é calcular a altura da tela menos o cabeçalho e rodapé.
+   Ex: 100vh - (cabeçalho 80px + nav 80px) = 100vh - 160px
+  */
+  height: calc(100vh - 160px);
+  background-color: #f7f6f2;
+  position: relative;
+  overflow: hidden; /* Esconde o que sair da tela */
+}
+
+.container-filtros {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 10;
+}
+
+.btn-filtros {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.btn-filtros img {
+  height: 20px;
+}
+
+.btn-filtros .texto-filtros{
+  font-size: 1rem;
+}
