@@ -1,0 +1,41 @@
+<div class="pagina-historico">
+  <main class="conteiner-principal">
+
+    <div class="titulo-secao">
+      <h2>Histórico de Doações</h2>
+      <p>Acompanhe todas as suas contribuições</p>
+    </div>
+
+    <div class="lista-doacoes">
+
+      @for (doacao of doacoes; track doacao.codigo) {
+
+        <div class="card-doacao">
+          <div class="info-principal">
+            <div class="icone-doacao">
+              <img src="assets/imagens/icon-gotaverde2.png" alt="Doação">
+            </div>
+            <div class="detalhes-doacao">
+              <strong>{{ doacao.escola }}</strong>
+              <span>{{ doacao.data }}</span>
+              <span class="detalhe-secundario">
+                <p>Quantidade: {{ doacao.quantidade }}</p>
+                Código: {{ doacao.codigo }}
+              </span>
+            </div>
+          </div>
+
+          <div class="status-doacao">
+            @if (doacao.status === 'Confirmado') {
+              <span class="status-tag status-confirmado"><img src="assets/imagens/icon-confirmado.png" alt="Confirmado">Confirmado</span>
+            }
+            @else if (doacao.status === 'Pendente') {
+              <span class="status-tag status-pendente"><img src="assets/imagens/icon-pendente.png" alt="Pendente">Pendente</span>
+            }
+          </div>
+        </div>
+      }
+
+    </div>
+  </main>
+</div>

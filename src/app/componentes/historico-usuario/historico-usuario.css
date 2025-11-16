@@ -1,0 +1,120 @@
+* {
+  font-family: Poppins, sans-serif;
+}
+
+.pagina-historico {
+  background-color: #fcfbf8;
+  min-height: calc(100vh - 160px);
+  padding: 30px 5%;
+}
+
+.container-principal {
+  max-width: 900px;
+  margin: 0 auto; /* Centraliza o conteúdo */
+}
+
+.titulo-secao h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.titulo-secao p {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 30px;
+}
+
+.lista-doacoes {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espaço entre os cards */
+}
+
+.card-doacao {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  padding: 24px;
+  display: flex;
+  justify-content: space-between; /* Lado esquerdo | Lado direito */
+  align-items: center;
+}
+
+.info-principal {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Espaço entre ícone e texto */
+}
+
+.icone-doacao {
+  background-color: #e8f5e9; /* Fundo verde claro */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icone-doacao img {
+  height: 24px;
+  width: 24px;
+}
+
+.detalhes-doacao {
+  display: flex;
+  flex-direction: column;
+}
+
+.detalhes-doacao strong {
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.detalhes-doacao span {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.detalhes-doacao .detalhe-secundario {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 4px;
+}
+
+.detalhe-secundario p {
+  margin: 2px 0;
+  color: green;
+}
+
+.status-tag {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-confirmado {
+  background-color: #e8f5e9; /* Fundo verde */
+  color: #2e7d32; /* Texto verde */
+}
+
+.status-confirmado img {
+  width: 20px;
+}
+
+
+.status-pendente {
+  background-color: #fff8e1; /* Fundo amarelo */
+  color: #f57f17; /* Texto amarelo/laranja */
+}
+
+.status-pendente img {
+  width: 20px;
+}
