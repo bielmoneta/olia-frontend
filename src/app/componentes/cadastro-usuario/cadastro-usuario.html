@@ -42,20 +42,20 @@
         <label>Endereço completo</label>
         <div class="campo-input">
           <span class="icone-campo-endereco"><img src="assets/imagens/icon-endereco.png" alt="Endereço Icon"></span>
-          <input type="text" placeholder="Rua, número, complemento" name="endereco" [(ngModel)]="usuario.endereco">
+          <input type="text" placeholder="Rua, número, complemento" name="endereco" [(ngModel)]="usuario.endereco.logradouro">
         </div>
 
         <div class="linha-dupla">
           <div class="campo-metade">
             <label>Bairro</label>
             <div class="campo-input">
-              <input type="text" placeholder="Seu bairro" name="bairro" [(ngModel)]="usuario.bairro">
+              <input type="text" placeholder="Seu bairro" name="bairro" [(ngModel)]="usuario.endereco.bairro">
             </div>
           </div>
           <div class="campo-metade">
             <label>Cidade</label>
             <div class="campo-input">
-              <input type="text" placeholder="Sua cidade" name="cidade" [(ngModel)]="usuario.cidade">
+              <input type="text" placeholder="Sua cidade" name="cidade" [(ngModel)]="usuario.endereco.cidade">
             </div>
           </div>
         </div>
@@ -64,18 +64,18 @@
 
         <h3 class="titulo-secao">Programa Social</h3>
         <div class="caixa-bolsa-familia">
-          <input type="checkbox" id="bolsaFamilia" name="bolsaFamilia" [(ngModel)]="usuario.bolsaFamilia">
+          <input type="checkbox" id="bolsaFamilia" name="bolsaFamilia" [(ngModel)]="usuario.temBolsaFamilia">
           <label for="bolsaFamilia" class="label-checkbox">
             <strong>Sou beneficiário do Bolsa Família</strong>
             <span>Necessário para receber sabão ecológico como recompensa</span>
           </label>
         </div>
 
-        @if (usuario.bolsaFamilia) {
+        @if (usuario.temBolsaFamilia) {
         <div class="campo-aparecendo">
           <label>Número do Bolsa Família (NIS)</label>
           <div class="campo-input">
-            <input type="text" placeholder="00000000000" name="nis" [(ngModel)]="usuario.nis">
+            <input type="text" placeholder="00000000000" name="nis" [(ngModel)]="usuario.numeroNis">
           </div>
         </div>
         }
@@ -106,7 +106,7 @@
           </div>
         </div>
 
-        <button type="button" class="btn-cadastro" routerLink="/login-usuario">Criar Conta</button>
+        <button type="button" (click)="cadastrar()" class="btn-cadastro" routerLink="/login-usuario">Criar Conta</button>
 
       </form>
     </div>
