@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { Cabecalho } from "./componentes/cabecalho/cabecalho";
 import { Rodape } from './componentes/rodape/rodape';
 import { RodapeUsuario } from './componentes/rodape-usuario/rodape-usuario';
+import { LeafletModule } from '@bluehalo/ngx-leaflet';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Cabecalho, RodapeUsuario, Rodape, CommonModule, RouterModule],
+  imports: [RouterOutlet, Cabecalho, RodapeUsuario, Rodape, CommonModule, RouterModule, LeafletModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
