@@ -1,0 +1,79 @@
+<div class="pagina-perfil">
+  <main class="container-principal">
+
+    <h2 class="titulo-pagina">Meu Perfil</h2>
+
+    <div class="card-impacto">
+      <div class="cabecalho-impacto">
+        <span class="icone-grafico"><img src="assets/imagens/icon-grafico.png" alt="Grafico"></span> Seu Impacto Ambiental
+      </div>
+
+      <div class="metricas-container">
+        <div class="item-metrica">
+          <strong>{{ metricas.oleoReciclado }}L</strong>
+          <span>Óleo reciclado</span>
+        </div>
+        <div class="item-metrica">
+          <strong>{{ metricas.co2Evitado }}kg</strong>
+          <span>CO₂ evitado</span>
+        </div>
+        <div class="item-metrica">
+          <strong>{{ metricas.saboesRecebidos }}</strong>
+          <span>Sabões recebidos</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-progresso">
+      <div class="info-progresso">
+        <span class="icone-presente"><img src="assets/imagens/icon-recompensaamarelo.png" alt="Presente"></span>
+        <strong>Progresso para Próxima Recompensa</strong>
+      </div>
+      <p class="texto-faltam">
+        Faltam {{ metaProximaRecompensa - progressoAtual }}L para receber seu próximo sabão
+      </p>
+
+      <div class="barra-fundo">
+        <div class="barra-preenchida" [style.width]="porcentagemProgresso"></div>
+      </div>
+
+      <div class="legenda-barra">
+        <span>{{ progressoAtual }}L</span>
+        <span>{{ metaProximaRecompensa }}L</span>
+      </div>
+    </div>
+
+    <div class="card-dados">
+      <div class="cabecalho-dados">
+        <h3>Dados Pessoais</h3>
+        <button class="btn-editar" (click)="alternarEdicao()">
+          {{ modoEdicao ? 'Salvar' : 'Editar' }}
+        </button>
+      </div>
+
+      <div class="form-dados">
+        <div class="campo">
+          <label>Nome completo</label>
+          <input type="text" [(ngModel)]="usuario.nome" [disabled]="!modoEdicao">
+        </div>
+
+        <div class="campo">
+          <label>Email</label>
+          <input type="email" [(ngModel)]="usuario.email" [disabled]="!modoEdicao">
+        </div>
+
+        <div class="campo">
+          <label>Endereço</label>
+          <input type="text" [(ngModel)]="usuario.endereco" [disabled]="!modoEdicao">
+        </div>
+
+        <div class="campo">
+          <label>Nº Bolsa Família</label>
+          <input type="text" [(ngModel)]="usuario.nis" [disabled]="!modoEdicao">
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+</div>
