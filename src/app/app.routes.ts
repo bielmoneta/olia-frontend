@@ -4,11 +4,15 @@ import { LoginUsuario } from './componentes/login-usuario/login-usuario';
 import { CadastroUsuario } from './componentes/cadastro-usuario/cadastro-usuario';
 import { MapaUsuario } from './componentes/mapa-usuario/mapa-usuario';
 import { HistoricoUsuario } from './componentes/historico-usuario/historico-usuario';
+import { RecompensaUsuario } from './componentes/recompensa-usuario/recompensa-usuario';
+import { PerfilUsuario } from './componentes/perfil-usuario/perfil-usuario';
 
 export const routes: Routes = [
   {path: '', component: Inicio  },
   {path: 'login-usuario', component: LoginUsuario },
   {path: 'cadastro-usuario', component: CadastroUsuario },
   {path: 'mapa-usuario', component: MapaUsuario },
-  {path: 'historico-usuario', component: HistoricoUsuario}
+  {path: 'historico-usuario', component: HistoricoUsuario},
+  {path: 'recompensa-usuario', component: RecompensaUsuario },
+  {path: 'perfil-usuario', component: PerfilUsuario }
 ];
