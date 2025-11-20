@@ -1,0 +1,65 @@
+<div class="pagina-recompensa">
+  <main class="container-principal">
+
+    <div class="titulo-secao">
+      <h2>Retirada de Sabão</h2>
+    </div>
+
+    @if (isElegivel) {
+    <div class="card-elegivel">
+      <div class="icone-check">
+        <img src="assets/imagens/icon-check.png" alt="Check">
+      </div>
+      <div class="texto-elegivel">
+        <strong>Você está elegível!</strong>
+        <span>Cadastro Bolsa Família: {{ nisUsuario }}</span>
+      </div>
+    </div>
+    } @else {
+    <div class="card-nao-elegivel">
+      <div class="icone-aviso">
+        <span>!</span>
+      </div>
+      <div class="texto-elegivel">
+        <strong>Benefício não disponível</strong>
+        <span>Exclusivo para cadastrados no Bolsa Família.</span>
+      </div>
+    </div>
+    }
+    <h3 class="subtitulo">Locais Disponíveis</h3>
+
+    <div class="lista-locais">
+      @for (local of locais; track local.nome) {
+      <div class="card-local">
+        <div class="cabecalho-card">
+          <div class="info-local">
+            <div class="icone-presente">
+              <img src="assets/imagens/icon-recompensaamarelo.png" alt="Presente">
+            </div>
+            <div>
+              <strong>{{ local.nome }}</strong>
+              <span class="endereco">{{ local.endereco }}</span>
+            </div>
+          </div>
+          <span class="tag-status">{{ local.status }}</span>
+        </div>
+
+        <div class="detalhes-horario">
+          <div class="linha-info">
+            <img src="assets/imagens/icon-calendario.png" class="icone-pequeno" alt="Data">
+            <span>{{ local.data }}</span>
+          </div>
+          <div class="linha-info">
+            <img src="assets/imagens/icon-relogio.png" class="icone-pequeno" alt="Horario">
+            <span>{{ local.horario }}</span>
+          </div>
+        </div>
+        <button class="btn-confirmar" [disabled]="!isElegivel" (click)="confirmarRetirada(local)">
+          Confirmar Retirada
+        </button>
+      </div>
+      }
+    </div>
+
+  </main>
+</div>
