@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-recompensa-usuario',
@@ -9,11 +10,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './recompensa-usuario.css',
 })
 export class RecompensaUsuario {
-  // Essa informação virá do Backend/Login
-  isElegivel: boolean = true;
+ private service = inject(UsuarioService);
 
-  // Pega o NIS salvo no login ou usa um exemplo
-  nisUsuario = sessionStorage.getItem('nisUsuario');
+  // Variáveis de controle
+  isElegivel: boolean = false; // Começa falso por segurança
+  nisUsuario: string = '';
+  carregando: boolean = true; // Para mostrar algo enquanto busca
 
   // Dados fictícios dos locais (Mock)
   locais = [
@@ -33,8 +35,29 @@ export class RecompensaUsuario {
     }
   ];
 
+  ngOnInit() {
+    this.buscarDadosUsuario();
+  }
+
+  buscarDadosUsuario() {
+    const id = sessionStorage.getItem('idUsuario');
+
+    if (id) {
+      this.service.detalhar(+id).subscribe({
+        next: (dados) => {
+          this.isElegivel = dados.temBolsaFamilia;
+          this.nisUsuario = dados.numeroNis || 'Não cadastrado';
+          this.carregando = false;
+        },
+        error: (erro) => {
+          console.error('Erro ao buscar dados', erro);
+          this.carregando = false;
+        }
+      });
+    }
+  }
+
   confirmarRetirada(local: any) {
     alert(`Retirada confirmada em: ${local.nome}`);
-    // TODO: Lógica de backend para reservar o sabão
   }
 }

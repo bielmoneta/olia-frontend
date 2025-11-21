@@ -36,7 +36,7 @@ export class MapaUsuario {
     // Pin 2 (Escola B)
     marker([-8.0500, -34.8900], {
       icon: icon({
-         iconUrl: 'assets/imagens/icon-pin-verde.png',
+         iconUrl: 'assets/imagens/icon-pinvermelho.png',
          iconSize: [40, 40]
       })
     })

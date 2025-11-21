@@ -1,70 +1,59 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { RouterLink, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { UsuarioService } from '../../services/usuario';
-
+import { UsuarioService } from '../../services/usuario.service';
+import { DadosCadastroUsuario } from '../../modelos-java/dados-cadastro-usuario';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-cadastro-usuario',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink, NgxMaskDirective],
   templateUrl: './cadastro-usuario.html',
   styleUrl: './cadastro-usuario.css',
 })
 export class CadastroUsuario {
+  private service = inject(UsuarioService);
+  private router = inject(Router);
 
-  constructor(private usuarioService: UsuarioService) {} // <-- INJEÇÃO DO SERVICE
-
-  usuario = {
+  usuario: DadosCadastroUsuario ={
     nome: '',
     cpf: '',
     telefone: '',
     endereco: {
       logradouro: '',
       bairro: '',
-      cidade: ''
+      cidade: '',
     },
     temBolsaFamilia: false,
     numeroNis: '',
     email: '',
-    senha: '',
-    confirmarSenha: ''
+    senha: ''
   };
+  confirmarSenha = '';
 
   cadastrar() {
+    // Se o usuário não tem bolsa família, garantimos que o NIS vai nulo
+    // para não dar erro de validação no Java se estiver vazio ""
+    if (!this.usuario.temBolsaFamilia) {
+      delete this.usuario.numeroNis;
+    }
 
-    if (this.usuario.senha !== this.usuario.confirmarSenha) {
+    if (this.usuario.senha !== this.confirmarSenha) {
       alert('As senhas não coincidem!');
       return;
     }
 
-    //Objeto com os dados para enviar ao backend, pois o backend não espera o campo confirmarSenha
-    const usuarioParaEnviar = {
-      nome: this.usuario.nome,
-      email: this.usuario.email,
-      senha: this.usuario.senha,
-      cpf: this.usuario.cpf,
-      telefone: this.usuario.telefone,
-      temBolsaFamilia: this.usuario.temBolsaFamilia,
-      numeroNis: this.usuario.numeroNis,
-      endereco: {
-        logradouro: this.usuario.endereco.logradouro,
-        bairro: this.usuario.endereco.bairro,
-        cidade: this.usuario.endereco.cidade
-      }
-    };
-
-    // Chamando o método do service para cadastrar o usuário
-    this.usuarioService.cadastrarUsuario(usuarioParaEnviar).subscribe({
-      next: (res) => {
-        console.log('Sucesso:', res);
-        alert('Usuário cadastrado com sucesso!');
+    this.service.cadastrar(this.usuario).subscribe({
+      next: () => {
+        alert('Cadastrado com sucesso!');
+        this.router.navigate(['/login-usuario']);
       },
-      error: (err) => {
-        console.error('Erro ao cadastrar:', err);
-        alert('Erro ao cadastrar usuário.');
-      }
+      error: (erro) => {
+        console.error(erro);
+        alert('Erro ao cadastrar. Verifique os dados.');
+      },
     });
   }
 }

@@ -64,12 +64,12 @@
 
         <div class="campo">
           <label>Endereço</label>
-          <input type="text" [(ngModel)]="usuario.endereco" [disabled]="!modoEdicao">
+          <input type="text" [(ngModel)]="usuario.endereco.logradouro" [disabled]="!modoEdicao">
         </div>
 
         <div class="campo">
           <label>Nº Bolsa Família</label>
-          <input type="text" [(ngModel)]="usuario.nis" [disabled]="!modoEdicao">
+          <input type="text" [(ngModel)]="usuario.numeroNis" [disabled]="!modoEdicao">
         </div>
 
       </div>

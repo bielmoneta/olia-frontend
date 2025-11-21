@@ -5,7 +5,9 @@
       <h2>Retirada de Sabão</h2>
     </div>
 
-    @if (isElegivel) {
+    @if (!carregando) {
+
+      @if (isElegivel) {
     <div class="card-elegivel">
       <div class="icone-check">
         <img src="assets/imagens/icon-check.png" alt="Check">
@@ -26,6 +28,8 @@
       </div>
     </div>
     }
+    }
+
     <h3 class="subtitulo">Locais Disponíveis</h3>
 
     <div class="lista-locais">

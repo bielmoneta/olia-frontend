@@ -13,6 +13,10 @@ export class Cabecalho {
   private router = inject(Router); //injeta o roteador para ler a url das páginas
   private location = inject(Location); //injeta o location para manipular o histórico de navegação
 
+  getNomeUsuario(): string {
+    return sessionStorage.getItem('nomeUsuario') || 'Usuário';
+  }
+
   isPaginaLogin(): boolean {
     const url = this.router.url;
     return url.includes('/login') || url.includes('/cadastro');

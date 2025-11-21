@@ -24,14 +24,14 @@
             <label>CPF</label>
             <div class="campo-input">
               <span class="icone-campo"><img src="assets/imagens/icon-cpf.png" alt="CPF"></span>
-              <input type="text" placeholder="000.000.000-00" name="cpf" [(ngModel)]="usuario.cpf">
+              <input type="text" placeholder="000.000.000-00" name="cpf" [(ngModel)]="usuario.cpf" mask="000.000.000-00" [dropSpecialCharacters]="true">
             </div>
           </div>
           <div class="campo-metade">
             <label>Telefone</label>
             <div class="campo-input">
               <span class="icone-campo-telefone"><img src="assets/imagens/icon-telefone.png" alt="Telefone"></span>
-              <input type="tel" placeholder="(00) 00000-0000" name="telefone" [(ngModel)]="usuario.telefone">
+              <input type="tel" placeholder="(00) 00000-0000" name="telefone" [(ngModel)]="usuario.telefone" mask="(00) 00000-0000" [dropSpecialCharacters]="true">
             </div>
           </div>
         </div>
@@ -42,7 +42,8 @@
         <label>Endereço completo</label>
         <div class="campo-input">
           <span class="icone-campo-endereco"><img src="assets/imagens/icon-endereco.png" alt="Endereço Icon"></span>
-          <input type="text" placeholder="Rua, número, complemento" name="endereco" [(ngModel)]="usuario.endereco.logradouro">
+          <input type="text" placeholder="Rua, número, complemento" name="endereco"
+            [(ngModel)]="usuario.endereco.logradouro">
         </div>
 
         <div class="linha-dupla">
@@ -75,7 +76,7 @@
         <div class="campo-aparecendo">
           <label>Número do Bolsa Família (NIS)</label>
           <div class="campo-input">
-            <input type="text" placeholder="00000000000" name="nis" [(ngModel)]="usuario.numeroNis">
+            <input type="text" placeholder="00000000000" name="nis" [(ngModel)]="usuario.numeroNis" mask="00000000000" [dropSpecialCharacters]="false">
           </div>
         </div>
         }
@@ -101,12 +102,14 @@
             <label>Confirmar senha</label>
             <div class="campo-input">
               <span class="icone-campo"><img src="assets/imagens/icon-senha.png" alt="Senha"></span>
-              <input type="password" placeholder="••••••••" name="confirmarSenha" [(ngModel)]="usuario.confirmarSenha">
+              <input type="password" placeholder="••••••••" name="confirmarSenha" [(ngModel)]="confirmarSenha">
             </div>
+
           </div>
         </div>
 
-        <button type="button" (click)="cadastrar()" class="btn-cadastro" routerLink="/login-usuario">Criar Conta</button>
+        <button type="button" (click)="cadastrar()" class="btn-cadastro" routerLink="/login-usuario">Criar
+          Conta</button>
 
       </form>
     </div>

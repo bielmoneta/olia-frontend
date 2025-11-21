@@ -12,12 +12,14 @@
       <form>
         <label>E-mail</label>
         <div class="campo-input">
-          <span class="icone-campo"><img src="assets/imagens/icon-email.png" alt="Icone Email"></span> <input type="email" placeholder="seu@email.com">
+          <span class="icone-campo"><img src="assets/imagens/icon-email.png" alt="Icone Email"></span>
+          <input type="email" placeholder="seu@email.com" name="email" [(ngModel)]="loginData.email">
         </div>
 
         <label>Senha</label>
         <div class="campo-input">
-          <span class="icone-campo"><img src="assets/imagens/icon-senha.png" alt="Icone Senha"></span> <input type="password" placeholder="••••••••">
+          <span class="icone-campo"><img src="assets/imagens/icon-senha.png" alt="Icone Senha"></span>
+          <input type="password" placeholder="••••••••" name="senha" [(ngModel)]="loginData.senha">
         </div>
 
         <div class="esqueci-senha">
@@ -27,9 +29,9 @@
         <button type="button" class="btn-entrar" (click)="fazerLogin()">Entrar</button>
       </form>
 
-        <div class="divisoria">
-          <p>Ainda não tem uma conta?</p>
-        </div>
+      <div class="divisoria">
+        <p>Ainda não tem uma conta?</p>
+      </div>
 
       <button type="button" class="btn-cadastrar" routerLink="/cadastro-usuario">Cadastre-se</button>
 

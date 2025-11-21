@@ -1,6 +1,6 @@
 <header class="olia-cabecalho" [class.alinhado-esquerda]="isPaginaLogin()">
 
-<div class="lado-esquerdo">
+  <div class="lado-esquerdo">
     @if (isPaginaLogin()) {
     <a (click)="voltar()" class="botao-voltar" style="cursor: pointer;">
       <span class="seta"><img src="assets/imagens/icon-setavoltar.png" alt="Seta"></span>
@@ -18,9 +18,19 @@
 
   <div class="lado-direito">
     @if (isLogado()) {
-      <div class="info-usuario">
-        <button class="btn-sair" (click)="fazerLogout()"><img src="assets/imagens/icon-sair.png" alt="Sair">Sair</button>
+    <div class="info-usuario">
+
+      <div class="dados-pessoa">
+        <img src="assets/imagens/icon-usuarioblack.png" alt="Perfil" class="icone-pessoa">
+        <span class="nome-texto">{{ getNomeUsuario() }}</span>
       </div>
+
+      <button class="btn-sair" (click)="fazerLogout()">
+        <img src="assets/imagens/icon-sair.png" alt="Sair">
+        Sair
+      </button>
+
+    </div>
     }
   </div>
 
