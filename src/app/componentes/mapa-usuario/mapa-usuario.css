@@ -1,51 +1,147 @@
-.pagina-mapa {
-  /* O truque é calcular a altura da tela menos o cabeçalho e rodapé.
-   Ex: 100vh - (cabeçalho 80px + nav 80px) = 100vh - 160px
-  */
-  height: calc(100vh - 160px);
-  background-color: #f7f6f2;
-  position: relative;
-  overflow: hidden; /* Esconde o que sair da tela */
+* {
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box; /* Garante que padding não aumente o tamanho */
 }
 
-.container-filtros {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  z-index: 10;
-}
-
-.btn-filtros {
-  background: white;
-  border: 1px solid #ddd;
-  padding: 10px 15px;
-  border-radius: 20px;
-  cursor: pointer;
+/* O Container Principal */
+.layout-dividido {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 500;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-.btn-filtros img {
-  height: 20px;
+  flex-direction: row;
+  height: calc(100vh - 160px);
+  width: 100%;
+  overflow: hidden;
+  background-color: #f7f6f2;
 }
 
-.btn-filtros .texto-filtros{
+/* --- LADO ESQUERDO (MAPA) --- */
+.container-mapa {
+  flex: 1; /* Ocupa todo o espaço restante */
+  position: relative;
+  min-width: 0; /* Evita bugs de overflow */
+}
+
+.mapa-frame {
+  /* CORREÇÃO: Removi margem e tamanhos fixos */
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+/* --- LADO DIREITO (LISTA) --- */
+.container-lista {
+  width: 400px;
+  min-width: 400px;
+  background-color: #fcfbf8;
+  border-left: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.05);
+  z-index: 2;
+}
+
+.titulo-lista {
+  color: #004d40;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.scroll-lista {
+  overflow-y: auto;
+  padding-right: 5px;
+  flex: 1;
+}
+
+/* Card e Conteúdo */
+.card-escola {
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.card-escola:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-color: #689f38;
+}
+
+.cabecalho-card {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.cabecalho-card h4 {
+  margin: 0;
+  color: #333;
   font-size: 1rem;
 }
 
-.mapa-real {
-  margin-top: 120px;
-  height: 500px;
-  width: 100%;
-  z-index: 1; /* Garante que o mapa fique por baixo dos filtros */
+/* Alinhamento dos ícones pequenos */
+.distancia, .horario {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  color: #666;
 }
 
-/* Ajuste no filtro para garantir que ele fique POR CIMA do mapa */
-.container-filtros {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  z-index: 10; /* Z-index maior = fica na frente */
+.distancia img, .horario img {
+  height: 14px; /* Tamanho controlado dos ícones */
+  width: auto;
+  opacity: 0.7;
+}
+
+.endereco {
+  margin: 3px 0;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.status-capacidade {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.barra-fundo {
+  flex: 1;
+  height: 8px;
+  background-color: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.barra-progresso {
+  height: 100%;
+  background-color: #689f38;
+  border-radius: 4px;
+}
+
+.porcentagem {
+  font-weight: bold;
+  color: #004d40;
+}
+
+.btn-doar {
+  width: 100%;
+  background-color: #689f38;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-doar:hover {
+  background-color: #558b2f;
 }

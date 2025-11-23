@@ -1,16 +1,48 @@
-<div class="pagina-mapa">
+<div class="layout-dividido">
 
-  <div class="container-filtros">
-    <button class="btn-filtros">
-      <img src="assets/imagens/icon-filtro.png" alt="Filtro">
-      <label class="texto-filtros">Filtros</label>
-    </button>
-  </div>
+  <div class="container-mapa">
+    <div class="mapa-frame"
+         leaflet
+         [leafletOptions]="options"
+         [leafletLayers]="layers"
+         (leafletMapReady)="onMapReady($event)">
+    </div>
 
-  <div class="mapa-real"
-       leaflet
-       [leafletOptions]="options"
-       [leafletLayers]="layers">
+    </div> <div class="container-lista">
+    <h3 class="titulo-lista">Locais de Coleta Próximos</h3>
+
+    <div class="scroll-lista">
+      @for (escola of escolas; track escola.id) {
+
+        <div class="card-escola" (click)="centralizarNoMapa(escola)">
+          <div class="cabecalho-card">
+            <h4>{{ escola.nome }}</h4>
+            <span class="distancia">
+              <img src="assets/imagens/icon-pin.png" alt=""> {{ escola.distancia }}
+            </span>
+          </div>
+
+          <p class="endereco">{{ escola.endereco }}</p>
+
+          <p class="horario">
+            <img src="assets/imagens/icon-relogio.png" alt=""> {{ escola.horario }}
+          </p>
+
+          <div class="status-capacidade">
+            <span>Disponível:</span>
+            <div class="barra-fundo">
+              <div class="barra-progresso" [style.width.%]="escola.capacidade"></div>
+            </div>
+            <span class="porcentagem">{{ escola.capacidade }}%</span>
+          </div>
+
+          <button class="btn-doar" (click)="abrirDoacao(escola); $event.stopPropagation()">
+            Doar óleo aqui
+          </button>
+        </div>
+
+      }
+    </div>
   </div>
 
 </div>
