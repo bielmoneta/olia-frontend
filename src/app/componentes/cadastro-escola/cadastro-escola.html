@@ -1,0 +1,141 @@
+<div class="pagina-cadastro">
+  <main class="conteudo-central">
+
+    <div class="area-titulo">
+      <div class="icon-escola">
+        <img src="assets/imagens/icon-escolawhite.png" alt="Escola">
+      </div>
+      <h2>Cadastro de Escola</h2>
+      <p>Registre sua instituição para se tornar um ponto de coleta OLIA</p>
+    </div>
+
+    <div class="card-cadastro">
+      <form>
+
+        <h3 class="titulo-secao">Dados da Instituição</h3>
+        <label>Nome da Escola</label>
+        <div class="campo-input">
+          <span class="icone-campo-escola"><img src="assets/imagens/icon-escolacinza.png" alt=""></span>
+          <input type="text" placeholder="Nome completo da instituição" name="nome" [(ngModel)]="escola.nome">
+        </div>
+
+        <div class="linha-dupla">
+          <div class="campo-metade">
+            <label>CNPJ</label>
+            <div class="campo-input">
+              <span class="icone-campo"><img src="assets/imagens/icon-cpf.png" alt="CNPJ"></span>
+              <input type="text" placeholder="00.000.000/0000-00" mask="00.000.000/0000-00"
+                [dropSpecialCharacters]="true" name="cnpj" [(ngModel)]="escola.cnpj">
+            </div>
+          </div>
+          <div class="campo-metade">
+            <label>Código INEP</label>
+            <div class="campo-input">
+              <span class="icone-campo-hashtag"><img src="assets/imagens/icon-hashtag.png" alt="Código Inep"></span>
+              <input type="text" placeholder="00000000" name="inep" mask="00000000"[(ngModel)]="escola.codigo_inep">
+            </div>
+          </div>
+        </div>
+
+        <hr class="separador">
+
+        <h3 class="titulo-secao">Localização</h3>
+        <label>Endereço Completo</label>
+        <div class="campo-input">
+          <span class="icone-campo"><img src="assets/imagens/icon-pin.png" alt="Localização"></span>
+          <input type="text" placeholder="Rua, número, complemento" name="logradouro"
+            [(ngModel)]="escola.endereco.logradouro">
+        </div>
+
+        <div class="linha-dupla">
+          <div class="campo-metade">
+            <label>Bairro</label>
+            <div class="campo-input">
+              <input type="text" placeholder="Bairro da escola" name="bairro" [(ngModel)]="escola.endereco.bairro">
+            </div>
+          </div>
+          <div class="campo-metade">
+            <label>Cidade</label>
+            <div class="campo-input">
+              <input type="text" placeholder="Cidade" name="cidade" [(ngModel)]="escola.endereco.cidade">
+            </div>
+          </div>
+        </div>
+
+        <label>Capacidade de Armazenamento</label>
+        <div class="campo-input">
+          <span class="icone-campo-armazenamento"><img src="assets/imagens/icon-armazenamento.png" alt="Armazenamento"></span>
+          <select class="select-padrao" name="capacidade" [(ngModel)]="escola.capacidade">
+            <option value="" disabled selected>Selecione a capacidade</option>
+            <option value="PEQUENA">Pequena (até 50L)</option>
+            <option value="MEDIA">Média (até 100L)</option>
+            <option value="GRANDE">Grande (acima de 200L)</option>
+          </select>
+        </div>
+
+        <hr class="separador">
+
+        <h3 class="titulo-secao">Responsável pelo Programa</h3>
+        <label>Nome Completo</label>
+        <div class="campo-input">
+          <span class="icone-campo-usuario"><img src="assets/imagens/icon-usuarioblack.png" alt="Usuario"></span>
+          <input type="text" placeholder="Nome do responsável" name="resp_nome" [(ngModel)]="escola.nome_responsavel">
+        </div>
+
+        <div class="linha-dupla">
+          <div class="campo-metade">
+            <label>Telefone</label>
+            <div class="campo-input">
+              <span class="icone-campo-telefone"><img src="assets/imagens/icon-telefone.png" alt="Telefone"></span>
+              <input type="text" placeholder="(00) 00000-0000" mask="(00) 00000-0000" [dropSpecialCharacters]="true"
+                name="telefone" [(ngModel)]="escola.telefone">
+            </div>
+          </div>
+          <div class="campo-metade">
+            <label>E-mail</label>
+            <div class="campo-input">
+              <span class="icone-campo-email"><img src="assets/imagens/icon-email.png" alt="Email"></span>
+              <input type="email" placeholder="email@escola.com" name="email" [(ngModel)]="escola.email">
+            </div>
+          </div>
+        </div>
+
+        <hr class="separador">
+
+        <h3 class="titulo-secao">Dados de Acesso</h3>
+
+        <label>E-mail de Acesso da Escola</label>
+        <div class="campo-input">
+          <span class="icone-campo-email"><img src="assets/imagens/icon-email.png" alt="Email"></span>
+          <input type="email" placeholder="acesso@escola.com" name="email_acesso" [(ngModel)]="escola.email_acesso">
+        </div>
+        <span class="obs-input">Este será o email usado para fazer login no sistema</span>
+
+        <div class="linha-dupla">
+          <div class="campo-metade">
+            <label>Senha</label>
+            <div class="campo-input">
+              <span class="icone-campo"><img src="assets/imagens/icon-senha.png" alt="Senha"></span>
+              <input type="password" placeholder="••••••••" name="senha" [(ngModel)]="escola.senha">
+            </div>
+          </div>
+          <div class="campo-metade">
+            <label>Confirmar Senha</label>
+            <div class="campo-input">
+              <span class="icone-campo"><img src="assets/imagens/icon-senha.png" alt="Senha"></span>
+              <input type="password" placeholder="••••••••" name="conf_senha" [(ngModel)]="confirmarSenha">
+            </div>
+          </div>
+        </div>
+
+        <div class="box-aviso">
+          <p>Após o cadastro, sua escola será avaliada pela equipe do programa OLIA. Você receberá um e-mail de
+            confirmação em até 48 horas.</p>
+        </div>
+
+        <button type="button" class="btn-cadastro" (click)="cadastrar()">Cadastrar Escola</button>
+
+      </form>
+    </div>
+  </main>
+</div>
