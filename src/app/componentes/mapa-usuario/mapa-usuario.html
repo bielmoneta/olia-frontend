@@ -4,7 +4,6 @@
     <div class="mapa-frame"
          leaflet
          [leafletOptions]="options"
-         [leafletLayers]="layers"
          (leafletMapReady)="onMapReady($event)">
     </div>
 
@@ -22,7 +21,7 @@
             </span>
           </div>
 
-          <p class="endereco">{{ escola.endereco }}</p>
+          <p class="endereco">{{ escola.endereco.logradouro }} - {{ escola.endereco.bairro }}</p>
 
           <p class="horario">
             <img src="assets/imagens/icon-relogio.png" alt=""> {{ escola.horario }}
@@ -46,3 +45,11 @@
   </div>
 
 </div>
+
+@if (modalAberto) {
+  <app-modal-doacao>
+    [escola]="escolaSelecionada"
+    (fechar)="fecharModal()"
+    (doacaoConcluida)="salvarDoacaoPendente($event)">
+  </app-modal-doacao>
+}
