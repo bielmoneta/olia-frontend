@@ -6,6 +6,8 @@ import { MapaUsuario } from './componentes/mapa-usuario/mapa-usuario';
 import { HistoricoUsuario } from './componentes/historico-usuario/historico-usuario';
 import { RecompensaUsuario } from './componentes/recompensa-usuario/recompensa-usuario';
 import { PerfilUsuario } from './componentes/perfil-usuario/perfil-usuario';
+import { LoginEscola } from './login-escola/login-escola';
+import { CadastroEscola } from './componentes/cadastro-escola/cadastro-escola';
 
 export const routes: Routes = [
   {path: '', component: Inicio  },
@@ -14,5 +16,7 @@ export const routes: Routes = [
   {path: 'mapa-usuario', component: MapaUsuario },
   {path: 'historico-usuario', component: HistoricoUsuario},
   {path: 'recompensa-usuario', component: RecompensaUsuario },
-  {path: 'perfil-usuario', component: PerfilUsuario }
+  {path: 'perfil-usuario', component: PerfilUsuario },
+  {path: 'login-escola', component: LoginEscola },
+  {path: 'cadastro-escola', component: CadastroEscola }
 ];
