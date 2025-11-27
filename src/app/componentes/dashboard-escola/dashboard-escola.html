@@ -57,7 +57,7 @@
       </h4>
       <p class="subtitulo-secao branca">Agende a visita do governo para coleta</p>
 
-      <button class="btn-agendar" (click)="solicitarColeta()"> <img src="assets/imagens/icon-agendaverde.png" alt="Agenda">Agendar Coleta
+      <button class="btn-agendar" (click)="abrirModalColeta()"> <img src="assets/imagens/icon-agendaverde.png" alt="Agenda">Agendar Coleta
       </button>
     </div>
 
@@ -83,3 +83,7 @@
 
   </main>
 </div>
+
+@if (modalColetaAberto) {
+  <app-modal-coleta (fechar)="modalColetaAberto = false"></app-modal-coleta>
+}
