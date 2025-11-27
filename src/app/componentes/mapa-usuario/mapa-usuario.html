@@ -1,55 +1,73 @@
 <div class="layout-dividido">
 
   <div class="container-mapa">
-    <div class="mapa-frame"
-         leaflet
-         [leafletOptions]="options"
-         (leafletMapReady)="onMapReady($event)">
+
+    <div class="mapa-frame" leaflet [leafletOptions]="options" (leafletMapReady)="onMapReady($event)">
     </div>
 
-    </div> <div class="container-lista">
+    <div class="container-filtros">
+      <button class="btn-filtros">
+        <img src="assets/imagens/icon-filtro.png" alt="Filtro">
+        <label class="texto-filtros">Filtros</label>
+      </button>
+    </div>
+
+  </div>
+
+  <div class="container-lista">
     <h3 class="titulo-lista">Locais de Coleta Próximos</h3>
 
     <div class="scroll-lista">
+
       @for (escola of escolas; track escola.id) {
+      <div class="card-escola" (click)="centralizarNoMapa(escola)">
 
-        <div class="card-escola" (click)="centralizarNoMapa(escola)">
-          <div class="cabecalho-card">
-            <h4>{{ escola.nome }}</h4>
-            <span class="distancia">
-              <img src="assets/imagens/icon-pin.png" alt=""> {{ escola.distancia }}
-            </span>
-          </div>
-
-          <p class="endereco">{{ escola.endereco.logradouro }} - {{ escola.endereco.bairro }}</p>
-
-          <p class="horario">
-            <img src="assets/imagens/icon-relogio.png" alt=""> {{ escola.horario }}
-          </p>
-
-          <div class="status-capacidade">
-            <span>Disponível:</span>
-            <div class="barra-fundo">
-              <div class="barra-progresso" [style.width.%]="escola.capacidade"></div>
-            </div>
-            <span class="porcentagem">{{ escola.capacidade }}%</span>
-          </div>
-
-          <button class="btn-doar" (click)="abrirDoacao(escola); $event.stopPropagation()">
-            Doar óleo aqui
-          </button>
+        <div class="cabecalho-card">
+          <h4>{{ escola.nome }}</h4>
+          <span class="distancia">
+            <img src="assets/imagens/icon-pin.png" alt=""> {{ escola.distancia }}
+          </span>
         </div>
 
-      }
+        <p class="endereco">
+          {{ escola.endereco.logradouro }} - {{ escola.endereco.bairro }}
+        </p>
+
+        @if (escola.horario) {
+        <p class="horario">
+          <img src="assets/imagens/icon-relogio.png" alt=""> {{ escola.horario }}
+        </p>
+        }
+
+        <div class="status-capacidade">
+
+          <span [class.texto-esgotado]="escola.porcentagemOcupada >= 100">
+            {{ escola.porcentagemOcupada >= 100 ? 'Esgotado:' : 'Disponível:' }}
+          </span>
+
+          <div class="barra-fundo">
+            <div class="barra-progresso" [style.width.%]="escola.porcentagemOcupada"
+              [class.barra-cheia]="escola.porcentagemOcupada >= 100">
+            </div>
+          </div>
+
+          <span class="porcentagem">
+            {{ escola.porcentagemOcupada | number:'1.0-0' }}%
+          </span>
+        </div>
+
+        <button class="btn-doar" (click)="abrirDoacao(escola); $event.stopPropagation()"
+          [disabled]="escola.porcentagemOcupada >= 100">
+          {{ escola.porcentagemOcupada >= 100 ? 'Capacidade Máxima' : 'Doar óleo aqui' }}
+        </button>
+
+      </div> }
+
     </div>
   </div>
 
-</div>
-
-@if (modalAberto) {
-  <app-modal-doacao>
-    [escola]="escolaSelecionada"
-    (fechar)="fecharModal()"
-    (doacaoConcluida)="salvarDoacaoPendente($event)">
-  </app-modal-doacao>
+</div> @if (modalAberto) {
+<app-modal-doacao [escola]="escolaSelecionada" (fechar)="fecharModal()"
+  (doacaoConcluida)="salvarDoacaoPendente($event)">
+</app-modal-doacao>
 }

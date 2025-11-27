@@ -1,0 +1,85 @@
+<div class="pagina-dashboard">
+  <main class="container-principal">
+
+    <div class="card-hero">
+      <div class="texto-hero">
+        <h2>Painel da Escola <img src="assets/imagens/icon-chapeuescola.png" alt="Cap Graduation"></h2>
+        <p>Continue coletando óleo e acumulando recompensas!</p>
+      </div>
+      <div class="badge-ranking">
+        <span class="trofeu"><img src="assets/imagens/icon-trofeu.png" alt="Ranking"></span>
+        <div class="info-ranking">
+          <span class="ranking-titulo">Ranking</span>
+          <strong>0º lugar</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-status">
+      <div class="card-stat">
+        <span class="label-stat"><img src="assets/imagens/icon-gotaverde2.png" alt="Gota Verde"> Total Coletado</span>
+        <strong class="valor-stat">{{ dados.totalColetado }}L</strong>
+        <p class="desc-stat">Óleo recebido</p>
+      </div>
+
+      <div class="card-stat">
+        <span class="label-stat"><img src="assets/imagens/icon-caminhaoverde.png" alt="Caminhao Coleta"> Coletas</span>
+        <strong class="valor-stat">{{ dados.coletasRealizadas }}</strong>
+        <p class="desc-stat">Realizadas</p>
+      </div>
+
+      <div class="card-stat card-amarelo">
+        <span class="label-stat"><img src="assets/imagens/icon-estrela.png" alt="Estrela"> Pontos</span>
+        <strong class="valor-stat">{{ dados.pontos }}</strong>
+        <p class="desc-stat">Acumulados</p>
+      </div>
+    </div>
+
+    <div class="card-secao">
+      <h4 class="titulo-secao">
+        <span class="icone-secao"><img src="assets/imagens/icon-armazenamento.png" alt="Capacidade"></span> Capacidade de Armazenamento
+      </h4>
+      <p class="subtitulo-secao">Status atual do reservatório</p>
+
+      <div class="info-barra">
+        <span>Capacidade Disponível</span>
+        <span>{{ dados.porcentagemOcupacao | number:'1.0-0' }}%</span>
+      </div>
+
+      <div class="barra-fundo">
+        <div class="barra-preenchida" [style.width.%]="dados.porcentagemOcupacao"></div>
+      </div>
+    </div>
+
+    <div class="card-secao card-coleta">
+      <h4 class="titulo-secao branca">
+        <span><img src="assets/imagens/icon-caminhaobranco.png" alt="Caminhao Coleta"></span> Solicitar Coleta
+      </h4>
+      <p class="subtitulo-secao branca">Agende a visita do governo para coleta</p>
+
+      <button class="btn-agendar" (click)="solicitarColeta()"> <img src="assets/imagens/icon-agendaverde.png" alt="Agenda">Agendar Coleta
+      </button>
+    </div>
+
+    <div class="card-secao">
+      <h4 class="titulo-secao">
+        <span class="icone-amarelo"><img src="assets/imagens/icon-grafico.png" alt=""></span> Progresso para Próxima Recompensa
+      </h4>
+      <p class="subtitulo-secao">
+        Faltam {{ metaPontos - dados.pontos }} pontos para desbloquear
+      </p>
+
+      <div class="barra-fundo">
+        <div class="barra-preenchida"
+             [style.width.%]="(dados.pontos / metaPontos) * 100">
+        </div>
+      </div>
+
+      <div class="legenda-barra">
+        <span>0 pts</span>
+        <span>{{ metaPontos }} pts</span>
+      </div>
+    </div>
+
+  </main>
+</div>

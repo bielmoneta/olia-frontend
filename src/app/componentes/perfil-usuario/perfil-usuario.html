@@ -10,15 +10,15 @@
 
       <div class="metricas-container">
         <div class="item-metrica">
-          <strong>{{ metricas.oleoReciclado }}L</strong>
+          <strong>{{ stats.totalLitros }}L</strong>
           <span>Óleo reciclado</span>
         </div>
         <div class="item-metrica">
-          <strong>{{ metricas.co2Evitado }}kg</strong>
-          <span>CO₂ evitado</span>
+          <strong>{{ stats.aguaPoupada | number:'1.0-0' }}L</strong>
+          <span>Água preservada</span>
         </div>
         <div class="item-metrica">
-          <strong>{{ metricas.saboesRecebidos }}</strong>
+          <strong>{{stats.saboesGanhos }}</strong>
           <span>Sabões recebidos</span>
         </div>
       </div>
@@ -30,7 +30,7 @@
         <strong>Progresso para Próxima Recompensa</strong>
       </div>
       <p class="texto-faltam">
-        Faltam {{ metaProximaRecompensa - progressoAtual }}L para receber seu próximo sabão
+        Faltam <strong>{{ metaPontos - pontosAtuais }} pontos</strong> para receber seu próximo sabão
       </p>
 
       <div class="barra-fundo">
@@ -38,8 +38,8 @@
       </div>
 
       <div class="legenda-barra">
-        <span>{{ progressoAtual }}L</span>
-        <span>{{ metaProximaRecompensa }}L</span>
+        <span>{{ pontosAtuais }}</span>
+        <span>{{ metaPontos }}</span>
       </div>
     </div>
 

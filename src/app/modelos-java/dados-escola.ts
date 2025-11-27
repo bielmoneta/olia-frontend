@@ -15,4 +15,5 @@ export interface DadosCadastroEscola {
   email: string;        // Email de contato
   email_acesso: string; // Login
   senha: string;
+  horario: string;
 }

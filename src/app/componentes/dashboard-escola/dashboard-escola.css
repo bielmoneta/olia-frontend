@@ -1,0 +1,233 @@
+.pagina-dashboard {
+  background-color: #fcfbf8;
+  min-height: calc(100vh - 160px);
+  padding: 30px 5% 120px 5%;
+  font-family: Poppins, Roboto, sans-serif;
+}
+
+.container-principal {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.card-hero {
+  background: linear-gradient(90deg, #1b4d3e 0%, #388e3c 100%);
+  border-radius: 16px;
+  padding: 30px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.texto-hero h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.texto-hero h2 img {
+  height: 35px;
+  width: auto;
+}
+
+.texto-hero p {
+  margin: 5px 0 0 0;
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.badge-ranking {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 10px 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.trofeu img {
+  height: 32px;
+}
+
+.info-ranking {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+.ranking-titulo {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.info-ranking strong {
+  font-size: 1.2rem;
+}
+
+.grid-status {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.card-stat {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.card-stat.card-amarelo {
+  background-color: #fdd835;
+  color: #333;
+}
+
+.label-stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.label-stat img {
+  height: 22px;
+  width: auto;
+}
+
+.valor-stat {
+  display: block;
+  font-size: 2rem;
+  color: #004d40;
+  margin-bottom: 5px;
+}
+
+.desc-stat {
+  font-size: 0.8rem;
+  color: #888;
+  margin: 0;
+}
+
+.card-amarelo .label-stat,
+.card-amarelo .desc-stat {
+  color: #444;
+}
+
+.card-amarelo .valor-stat {
+  color: #222;
+}
+
+.card-secao {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.titulo-secao {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #004d40;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.titulo-secao img {
+  height: 24px;
+  width: auto;
+}
+
+.subtitulo-secao {
+  color: #888;
+  font-size: 0.9rem;
+  margin: 5px 0 20px 0;
+}
+
+.info-barra {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.barra-fundo {
+  height: 12px;
+  background-color: #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.barra-preenchida {
+  height: 100%;
+  background-color: #9e9e9e;
+  border-radius: 6px;
+  transition: width 0.5s ease;
+}
+
+.card-coleta {
+  background-color: #558b2f;
+}
+
+.titulo-secao.branca,
+.subtitulo-secao.branca {
+  color: white;
+}
+
+.btn-agendar {
+  width: 100%;
+  background: white;
+  color: #558b2f;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-agendar img {
+  height: 24px;
+}
+
+.btn-agendar:hover {
+  background-color: #f1f8e9;
+}
+
+.legenda-barra {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: 5px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .grid-status {
+    grid-template-columns: 1fr;
+  }
+  .card-hero {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  .badge-ranking {
+    width: 100%;
+    justify-content: center;
+  }
+}

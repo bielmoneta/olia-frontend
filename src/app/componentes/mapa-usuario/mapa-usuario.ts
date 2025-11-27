@@ -4,6 +4,9 @@ import { LeafletModule } from '@bluehalo/ngx-leaflet';
 import { latLng, tileLayer, icon, Map, Marker } from 'leaflet';
 import { EscolaService } from '../../services/escola.service';
 import { ModalDoacao } from '../modal-doacao/modal-doacao';
+import { DoacaoService } from '../../services/doacao.service';
+import { UsuarioService } from '../../services/usuario.service';
+import { DadosCadastroEscola } from '../../modelos-java/dados-escola';
 
 // Declara o L global para usar nos popups e rotas
 declare const L: any;
@@ -18,7 +21,13 @@ declare const L: any;
 })
 export class MapaUsuario implements OnInit {
   private service = inject(EscolaService);
+  private doacaoService = inject(DoacaoService);
+  private usuarioService = inject(UsuarioService);
   private map: any;
+
+  // Coordenadas do Usuário (começa null)
+  userLat: number | null = null;
+  userLng: number | null = null;
 
   escolas: any[] = [];
 
@@ -56,10 +65,34 @@ export class MapaUsuario implements OnInit {
   }
 
   ngOnInit() {
-    this.carregarEscolas();
+    // Primeiro descobrimos onde o usuário mora
+    this.geocodificarUsuario();
+  }
+
+  geocodificarUsuario() {
+    const idUsuario = sessionStorage.getItem('idUsuario');
+    if (!idUsuario) {
+      this.carregarEscolas(); // Se não tiver logado, carrega sem distância
+      return;
+    }
+
+    this.usuarioService.detalhar(+idUsuario).subscribe((usuario) => {
+      const enderecoUser = `${usuario.endereco.logradouro}, ${usuario.endereco.cidade}`;
+
+      this.service.buscarCoordenadas(enderecoUser).subscribe((geo: any) => {
+        if (geo && geo.length > 0) {
+          this.userLat = geo[0].lat;
+          this.userLng = geo[0].lon;
+        }
+        // Só carrega as escolas depois de saber onde o usuário está
+        this.carregarEscolas();
+      });
+    });
   }
 
   carregarEscolas() {
+    this.escolas = [];
+
     this.service.listar().subscribe({
       next: (listaDoJava) => {
         listaDoJava.forEach((escola: any) => {
@@ -72,9 +105,22 @@ export class MapaUsuario implements OnInit {
               escola.lat = geo[0].lat;
               escola.lng = geo[0].lon;
 
-              // Dados complementares
-              escola.distancia = '2.5 km'; // (Mock)
-              escola.horario = '08h - 17h'; // (Ideal vir do banco)
+              // --- CÁLCULO DA DISTÂNCIA ---
+              if (this.userLat && this.userLng) {
+                // Cria pontos Leaflet
+                const pontoUsuario = L.latLng(this.userLat, this.userLng);
+                const pontoEscola = L.latLng(escola.lat, escola.lng);
+
+                // Calcula metros e converte para KM
+                const distMetros = pontoUsuario.distanceTo(pontoEscola);
+                escola.distancia = (distMetros / 1000).toFixed(1) + ' km';
+              } else {
+                escola.distancia = '-- km';
+              }
+
+              if (!escola.horario) {
+                escola.horario = 'Horário não informado';
+              }
 
               // Formata a capacidade (PEQUENA -> Pequena (até 50L))
               escola.capacidadeTexto = this.formatarCapacidade(escola.capacidade);
@@ -82,8 +128,12 @@ export class MapaUsuario implements OnInit {
               // Define uma porcentagem inicial (Mock)
               escola.percentual = Math.floor(Math.random() * 80);
 
-              this.escolas.push(escola);
-              this.adicionarPinoNoMapa(escola);
+              //Verifica se já existe uma escola com esse ID na lista visual
+              const jaExiste = this.escolas.some((e) => e.id === escola.id);
+              if (!jaExiste) {
+                this.escolas.push(escola);
+                this.adicionarPinoNoMapa(escola);
+              }
             }
           });
         });
@@ -94,24 +144,28 @@ export class MapaUsuario implements OnInit {
 
   formatarCapacidade(enumValor: string): string {
     switch (enumValor) {
-      case 'PEQUENA': return 'Pequena (até 50L)';
-      case 'MEDIA': return 'Média (até 100L)';
-      case 'GRANDE': return 'Grande (acima de 200L)';
-      default: return enumValor;
+      case 'PEQUENA':
+        return 'Pequena (até 50L)';
+      case 'MEDIA':
+        return 'Média (até 100L)';
+      case 'GRANDE':
+        return 'Grande (acima de 200L)';
+      default:
+        return enumValor;
     }
   } // <--- Faltava fechar essa chave
 
   // Adiciona o pino e o Popup com botão
   adicionarPinoNoMapa(escola: any) {
     if (this.map) {
-      L.marker([escola.lat, escola.lng], { icon: this.pinVerde })
-        .addTo(this.map)
-        .bindPopup(`
+      L.marker([escola.lat, escola.lng], { icon: this.pinVerde }).addTo(this.map).bindPopup(`
            <strong>${escola.nome}</strong><br>
            ${escola.endereco.logradouro}<br>
            <br>
            <button style="background:#689f38; color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer;"
-             onclick="document.dispatchEvent(new CustomEvent('abrirDoacao', {detail: ${JSON.stringify(escola).replace(/"/g, '&quot;')}}))">
+             onclick="document.dispatchEvent(new CustomEvent('abrirDoacao', {detail: ${JSON.stringify(
+               escola
+             ).replace(/"/g, '&quot;')}}))">
              Doar Aqui
            </button>
         `);
@@ -120,6 +174,7 @@ export class MapaUsuario implements OnInit {
 
   onMapReady(map: any) {
     this.map = map;
+    this.carregarEscolas();
   }
 
   centralizarNoMapa(escola: any) {
@@ -127,8 +182,6 @@ export class MapaUsuario implements OnInit {
       this.map.flyTo([escola.lat, escola.lng], 16);
     }
   }
-
-  // --- LÓGICA DO MODAL ---
 
   abrirDoacao(escola: any) {
     this.escolaSelecionada = escola;
@@ -140,11 +193,16 @@ export class MapaUsuario implements OnInit {
   }
 
   salvarDoacaoPendente(dadosDoacao: any) {
-    const historicoAtual = JSON.parse(localStorage.getItem('historicoDoacoes') || '[]');
-    historicoAtual.unshift(dadosDoacao);
-    localStorage.setItem('historicoDoacoes', JSON.stringify(historicoAtual));
-
-    this.fecharModal();
-    alert('Código gerado! Verifique seu histórico.');
+    // Chama o Backend para salvar no banco
+    this.doacaoService.doar(dadosDoacao).subscribe({
+      next: () => {
+        alert('Doação confirmada!');
+        this.fecharModal();
+      },
+      error: (erro) => {
+        console.error('Erro ao salvar doação', erro);
+        alert('Erro ao registrar doação.');
+      },
+    });
   }
 }

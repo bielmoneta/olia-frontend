@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms'; // Não esqueça!
-import { EscolaService } from '../services/escola.service';
+import { EscolaService } from '../../services/escola.service';
 
 @Component({
   selector: 'app-login-escola',
@@ -10,11 +10,15 @@ import { EscolaService } from '../services/escola.service';
   templateUrl: './login-escola.html',
   styleUrl: './login-escola.css'
 })
-export class LoginEscola {
+export class LoginEscola implements OnInit {
   private router = inject(Router);
   private service = inject(EscolaService);
 
   loginData = { email: '', senha: '' };
+
+  ngOnInit() {
+    sessionStorage.clear();
+  }
 
   fazerLogin() {
     this.service.fazerLogin(this.loginData).subscribe({
@@ -27,7 +31,6 @@ export class LoginEscola {
         sessionStorage.setItem('tipoUsuario', 'ESCOLA');
         sessionStorage.setItem('nomeUsuario', resposta.nome);
         sessionStorage.setItem('idEscola', resposta.id);
-
         this.router.navigate(['/dashboard-escola']);
       },
       error: (erro) => {

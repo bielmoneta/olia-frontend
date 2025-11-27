@@ -6,10 +6,10 @@
   <app-rodape></app-rodape>
 }
 
-@if (isPaginaApp()) {
+@if (isUsuarioComum()) {
   <app-rodape-usuario></app-rodape-usuario>
 }
 
-@if (isLogado()) {
-  <app-rodape-usuario></app-rodape-usuario>
+@if (isEscola()) {
+  <app-rodape-escola></app-rodape-escola>
 }

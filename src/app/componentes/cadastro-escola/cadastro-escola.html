@@ -32,7 +32,7 @@
             <label>Código INEP</label>
             <div class="campo-input">
               <span class="icone-campo-hashtag"><img src="assets/imagens/icon-hashtag.png" alt="Código Inep"></span>
-              <input type="text" placeholder="00000000" name="inep" mask="00000000"[(ngModel)]="escola.codigo_inep">
+              <input type="text" placeholder="00000000" name="inep" mask="00000000" [(ngModel)]="escola.codigo_inep">
             </div>
           </div>
         </div>
@@ -62,9 +62,16 @@
           </div>
         </div>
 
+        <label>Horário de Funcionamento</label>
+        <div class="campo-input">
+          <span class="icone-campo"><img src="assets/imagens/icon-relogio.png" alt="Horario"></span>
+          <input type="text" placeholder="Ex: 08h - 17h" name="horario" [(ngModel)]="escola.horario">
+        </div>
+
         <label>Capacidade de Armazenamento</label>
         <div class="campo-input">
-          <span class="icone-campo-armazenamento"><img src="assets/imagens/icon-armazenamento.png" alt="Armazenamento"></span>
+          <span class="icone-campo-armazenamento"><img src="assets/imagens/icon-armazenamento.png"
+              alt="Armazenamento"></span>
           <select class="select-padrao" name="capacidade" [(ngModel)]="escola.capacidade">
             <option value="" disabled selected>Selecione a capacidade</option>
             <option value="PEQUENA">Pequena (até 50L)</option>

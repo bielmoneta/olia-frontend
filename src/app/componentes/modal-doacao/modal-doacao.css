@@ -1,0 +1,172 @@
+/* Fundo escuro atrás do modal */
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px); /* Desfoque */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* Fica na frente de tudo (mapa é z-index 1000) */
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* O Card do Modal */
+.modal-container {
+  background: white;
+  width: 90%;
+  max-width: 400px;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  position: relative;
+  text-align: center;
+  animation: slideUp 0.3s ease-out;
+}
+
+.btn-fechar-x {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #999;
+  cursor: pointer;
+}
+
+/* Títulos e Textos */
+.icone-topo {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.icone-topo.sucesso {
+  color: #689f38;
+}
+
+h3 {
+  color: #004d40;
+  margin: 0 0 10px 0;
+  font-size: 1.3rem;
+}
+
+.descricao {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+}
+
+.input-gigante {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.input-gigante input {
+  width: 80px;
+  border: none;
+  border-bottom: 2px solid #689f38;
+  font-size: 3rem;
+  text-align: center;
+  color: #004d40;
+  font-weight: bold;
+}
+
+.input-gigante input:focus {
+  outline: none;
+  border-color: #004d40;
+}
+
+.unidade {
+  font-size: 1.2rem;
+  color: #555;
+  font-weight: 600;
+}
+
+.info-pontos {
+  background-color: #fff8e1;
+  color: #f57f17;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+  display: inline-block;
+}
+
+/* Área do Código e QR */
+.box-codigo {
+  background-color: #f1f8e9;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px dashed #689f38;
+  margin-bottom: 20px;
+}
+
+.label-codigo {
+  display: block;
+  font-size: 0.8rem;
+  color: #555;
+  text-transform: uppercase;
+}
+
+.texto-codigo {
+  display: block;
+  font-size: 1.8rem;
+  color: #004d40;
+  letter-spacing: 2px;
+}
+
+.box-qrcode img {
+  width: 140px;
+  height: 140px;
+  border: 5px solid white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 10px;
+}
+
+.aviso-final {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* Botão de Ação Principal */
+.btn-acao {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background-color: #689f38;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.1s, background 0.2s;
+}
+
+.btn-acao:hover {
+  background-color: #558b2f;
+}
+
+.btn-acao:active {
+  transform: scale(0.98);
+}
+
+.btn-concluir {
+  background-color: #004d40;
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px);
+    opacity: 0; } to { transform: translateY(0); opacity: 1; }
+}

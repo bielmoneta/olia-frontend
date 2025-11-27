@@ -22,7 +22,6 @@ export class LoginUsuario {
   fazerLogin() {
     this.service.fazerLogin(this.loginData).subscribe({
       next: (resposta: any) => {
-        console.log("Login Sucesso! Token:", resposta.token);
         sessionStorage.setItem('auth-token', resposta.token);
         sessionStorage.setItem('usuarioLogado', 'true');
         sessionStorage.setItem('nomeUsuario', resposta.nome);

@@ -30,4 +30,8 @@ export class EscolaService {
     const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(endereco)}`;
     return this.http.get(url);
   }
+
+  getDashboard(idEscola: number): Observable<any> {
+    return this.http.get(`${this.apiUrlEscola}/dashboard/${idEscola}`);
+  }
 }

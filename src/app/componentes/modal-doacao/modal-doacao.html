@@ -1,0 +1,48 @@
+<div class="overlay" (click)="fecharModal()">
+
+  <div class="modal-container" (click)="$event.stopPropagation()">
+
+    <button class="btn-fechar-x" (click)="fecharModal()">&times;</button>
+
+    @if (etapa === 1) {
+      <div class="conteudo-etapa">
+        <div class="icone-topo">🛢️</div>
+        <h3>Doar para {{ escola?.nome }}</h3>
+        <p class="descricao">Quantos litros de óleo você vai doar?</p>
+
+        <div class="input-gigante">
+          <input type="number" [(ngModel)]="quantidade" placeholder="0" min="1">
+          <span class="unidade">Litros</span>
+        </div>
+
+        <div class="info-pontos" *ngIf="quantidade">
+          <span>Você ganhará aproximadamente <strong>{{ quantidade * 10 }} pontos</strong>!</span>
+        </div>
+
+        <button class="btn-acao" (click)="avancarEtapa()">Gerar Código de Entrega</button>
+      </div>
+    }
+
+    @if (etapa === 2) {
+      <div class="conteudo-etapa">
+        <div class="icone-topo sucesso"><img src="assets/imagens/icon-check.png" alt="Check"></div>
+        <h3>Pré-agendamento realizado!</h3>
+        <p class="descricao">Mostre este código na escola para validar sua entrega.</p>
+
+        <div class="box-codigo">
+          <span class="label-codigo">Seu Código:</span>
+          <strong class="texto-codigo">{{ codigoDoacao }}</strong>
+        </div>
+
+        <div class="box-qrcode">
+          <img [src]="qrCodeUrl" alt="QR Code da Doação">
+        </div>
+
+        <p class="aviso-final">Isso ficará salvo no seu Histórico como "Pendente".</p>
+
+        <button class="btn-acao btn-concluir" (click)="concluirDoacao()">Entendi, vou levar!</button>
+      </div>
+    }
+
+  </div>
+</div>

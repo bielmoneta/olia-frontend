@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DoacaoService } from '../../services/doacao.service';
 
 @Component({
   selector: 'app-historico-usuario',
@@ -8,39 +9,29 @@ import { CommonModule } from '@angular/common';
   templateUrl: './historico-usuario.html',
   styleUrl: './historico-usuario.css',
 })
-export class HistoricoUsuario {
+export class HistoricoUsuario implements OnInit {
+
+  private service = inject(DoacaoService);
   doacoes: any[] = [];
 
-  constructor() {
-    //função que busca os dados
+  ngOnInit() {
     this.carregarHistorico();
   }
 
   carregarHistorico() {
-    //chamada HTTP para o Backend Java
+    // Pega o ID do usuário logado
+    const idUsuario = sessionStorage.getItem('idUsuario');
 
-    this.doacoes = [
-      {
-        escola: "Escola Municipal Santos Dumont",
-        data: "05/10/2025",
-        quantidade: "2L",
-        codigo: "DOA-2025-001",
-        status: "Confirmado"
-      },
-      {
-        escola: "Escola Estadual Machado de Assis",
-        data: "28/09/2025",
-        quantidade: "3.5L",
-        codigo: "DOA-2025-002",
-        status: "Confirmado"
-      },
-      {
-        escola: "Escola Municipal Santos Dumont",
-        data: "15/09/2025",
-        quantidade: "4L",
-        codigo: "DOA-2025-003",
-        status: "Pendente"
-      }
-    ];
+    if (idUsuario) {
+      // Chama o Backend
+      this.service.listarPorUsuario(+idUsuario).subscribe({
+        next: (listaReal) => {
+          this.doacoes = listaReal;
+        },
+        error: (erro) => {
+          console.error('Erro ao carregar histórico', erro);
+        }
+      });
+    }
   }
 }

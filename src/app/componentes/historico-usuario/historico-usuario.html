@@ -26,10 +26,10 @@
           </div>
 
           <div class="status-doacao">
-            @if (doacao.status === 'Confirmado') {
+            @if (doacao.status === 'CONFIRMADO' || doacao.status === 'Confirmado') {
               <span class="status-tag status-confirmado"><img src="assets/imagens/icon-confirmado.png" alt="Confirmado">Confirmado</span>
             }
-            @else if (doacao.status === 'Pendente') {
+            @else if (doacao.status === 'PENDENTE' || doacao.status === 'Pendente') {
               <span class="status-tag status-pendente"><img src="assets/imagens/icon-pendente.png" alt="Pendente">Pendente</span>
             }
           </div>

@@ -28,6 +28,7 @@ export class CadastroEscola {
     capacidade: '',
     nome_responsavel: '',
     telefone: '',
+    horario: '',
     email: '',
     email_acesso: '',
     senha: ''

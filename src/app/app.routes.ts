@@ -6,8 +6,9 @@ import { MapaUsuario } from './componentes/mapa-usuario/mapa-usuario';
 import { HistoricoUsuario } from './componentes/historico-usuario/historico-usuario';
 import { RecompensaUsuario } from './componentes/recompensa-usuario/recompensa-usuario';
 import { PerfilUsuario } from './componentes/perfil-usuario/perfil-usuario';
-import { LoginEscola } from './login-escola/login-escola';
+import { LoginEscola } from './componentes/login-escola/login-escola';
 import { CadastroEscola } from './componentes/cadastro-escola/cadastro-escola';
+import { DashboardEscola } from './componentes/dashboard-escola/dashboard-escola';
 
 export const routes: Routes = [
   {path: '', component: Inicio  },
@@ -18,5 +19,6 @@ export const routes: Routes = [
   {path: 'recompensa-usuario', component: RecompensaUsuario },
   {path: 'perfil-usuario', component: PerfilUsuario },
   {path: 'login-escola', component: LoginEscola },
-  {path: 'cadastro-escola', component: CadastroEscola }
+  {path: 'cadastro-escola', component: CadastroEscola },
+  {path: 'dashboard-escola', component: DashboardEscola}
 ];
