@@ -8,10 +8,10 @@ import { RespostaLogin } from '../modelos-java/resposta-login-usuario';
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
+export class UsuarioService { 
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:8080/usuarios';
-  private apiUrlLogin = 'http://localhost:8080/login';
+  private apiUrl = 'https://olia-backend-production.up.railway.app/usuarios';
+  private apiUrlLogin = 'https://olia-backend-production.up.railway.app/login';
 
 // 1. Cadastrar (@PostMapping)
   cadastrar(dados: DadosCadastroUsuario): Observable<any> {
