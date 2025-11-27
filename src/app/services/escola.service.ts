@@ -6,8 +6,8 @@ import { DadosCadastroEscola } from '../modelos-java/dados-escola';
 @Injectable({ providedIn: 'root' })
 export class EscolaService {
   private http = inject(HttpClient);
-  private apiUrlLoginEscola = 'http://localhost:8080/login/escola';
-  private apiUrlEscola = 'http://localhost:8080/escolas';
+  private apiUrlLoginEscola = 'https://olia-backend-production.up.railway.app/login/escola';
+  private apiUrlEscola = 'https://olia-backend-production.up.railway.app/escolas';
 
   cadastrar(dados: DadosCadastroEscola): Observable<any> {
     return this.http.post(this.apiUrlEscola, dados);

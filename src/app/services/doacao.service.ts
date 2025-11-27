@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class DoacaoService {
   private http = inject(HttpClient);
-  private apiDoacao = 'http://localhost:8080/doacoes';
+  private apiDoacao = 'https://olia-backend-production.up.railway.app/doacoes';
 
   // Método para cadastrar
   doar(dados: any): Observable<any> {
