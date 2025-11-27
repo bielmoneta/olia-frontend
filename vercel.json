@@ -1,14 +1,8 @@
 {
   "builds": [
-    {
-      "src": "dist/OLIA-Frontend/browser/**",
-      "use": "@vercel/static"
-    }
+    { "src": "package.json", "use": "@vercel/static-build" }
   ],
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "dist/OLIA-Frontend/browser/index.html"
-    }
+    { "src": "/(.*)", "dest": "/$1" }
   ]
 }
