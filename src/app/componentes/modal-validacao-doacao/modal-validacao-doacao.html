@@ -1,0 +1,71 @@
+<div class="overlay" (click)="fecharModal()">
+  <div class="modal-card" (click)="$event.stopPropagation()">
+
+    <button class="btn-close" (click)="fecharModal()">&times;</button>
+
+    @if (doacao.status === 'PENDENTE') {
+      <div class="cabecalho-modal">
+        <span class="icone-topo"><img src="assets/imagens/icon-validacao.png" alt="Validar"></span>
+        <h3>Validar Entrega</h3>
+        <p>Confira os dados apresentados pelo doador</p>
+      </div>
+
+      <div class="info-resumo">
+        <div class="linha">
+          <span>Doador:</span> <strong>{{ doacao.usuarioNome }}</strong>
+        </div>
+        <div class="linha">
+          <span>Data:</span> <strong>{{ doacao.data }}</strong>
+        </div>
+      </div>
+
+      <div class="form-validacao">
+        <label>Código de Segurança (Peça ao usuário)</label>
+        <input type="text"
+               [(ngModel)]="codigoInput"
+               placeholder="Ex: OLIA-8495"
+               class="input-codigo">
+
+        <label>Quantidade Recebida (Litros)</label>
+        <div class="input-qtd-wrapper">
+          <input type="number" [(ngModel)]="quantidadeReal" class="input-qtd">
+          <span>Litros</span>
+        </div>
+
+        @if (erro) {
+          <p class="msg-erro">{{ erro }}</p>
+        }
+
+        <button class="btn-confirmar" (click)="validarDoacao()">
+          Confirmar Recebimento
+        </button>
+      </div>
+    }
+
+    @else {
+      <div class="cabecalho-modal">
+        <img src="assets/imagens/icon-confirmado.png" alt="Sucesso" class="img-sucesso">
+        <h3 class="texto-verde">Doação Concluída</h3>
+        <p>Esta doação já foi processada e contabilizada.</p>
+      </div>
+
+      <div class="recibo-card">
+        <div class="linha-recibo">
+          <span>Código:</span> <span class="mono">{{ doacao.codigo }}</span>
+        </div>
+        <div class="linha-recibo">
+          <span>Volume:</span> <strong>{{ doacao.quantidade }}</strong>
+        </div>
+        <div class="linha-recibo">
+          <span>Doador:</span> <strong>{{ doacao.usuarioNome }}</strong>
+        </div>
+        <div class="linha-recibo">
+          <span>Status:</span> <span class="badge-sucesso">Validado</span>
+        </div>
+      </div>
+
+      <button class="btn-fechar" (click)="fecharModal()">Fechar</button>
+    }
+
+  </div>
+</div>
