@@ -15,4 +15,13 @@ export class DoacaoService {
   listarPorUsuario(idUsuario: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiDoacao}/usuario/${idUsuario}`);
   }
+
+  // Listar histórico da escola
+  listarPorEscola(idEscola: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiDoacao}/escola/${idEscola}`);
+  }
+
+  confirmarRecebimento(dados: { idDoacao: number; quantidadeReal: number }): Observable<void> {
+    return this.http.put<void>(`${this.apiDoacao}/confirmar`, dados);
+  }
 }
