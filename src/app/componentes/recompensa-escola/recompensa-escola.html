@@ -1,0 +1,56 @@
+<div class="pagina-recompensas">
+  <main class="container-principal">
+
+    <div class="cabecalho-pagina">
+      <h2>Minhas Recompensas</h2>
+      <p>Acumule pontos e desbloqueie melhorias para sua escola</p>
+    </div>
+
+    <div class="card-pontos">
+      <div>
+        <span class="label-pontos">Pontos Disponíveis</span>
+        <strong class="valor-pontos">{{ pontosAtuais }}</strong>
+      </div>
+      <div class="circulo-estrela">
+        <img src="assets/imagens/icon-estrela.png" alt="Estrela">
+      </div>
+    </div>
+
+    <div class="grid-recompensas">
+
+      @for (item of itens; track item.id) {
+        <div class="card-item">
+
+          <div class="info-item">
+            <div class="box-icone">
+              <img [src]="item.icone" alt="Icone">
+            </div>
+            <div class="texto-item">
+              <h4>{{ item.titulo }}</h4>
+              <p>{{ item.descricao }}</p>
+            </div>
+          </div>
+
+          <div class="rodape-item">
+            <span class="custo">
+              <span class="estrela-pequena"><img src="assets/imagens/icon-estrelaamarela.png" alt="Estrela"></span> {{ item.custo }} pontos
+            </span>
+
+            @if (pontosAtuais >= item.custo) {
+              <button class="btn-resgatar" (click)="resgatar(item)">
+                Resgatar
+              </button>
+            } @else {
+              <button class="btn-bloqueado" disabled>
+                Bloqueado
+              </button>
+            }
+          </div>
+
+        </div>
+      }
+
+    </div>
+
+  </main>
+</div>
