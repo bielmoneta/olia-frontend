@@ -1,16 +1,22 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EscolaService } from '../../services/escola.service';
+import { ModalColetaComponent } from '../modal-agenda-coleta/modal-agenda-coleta';
 
 @Component({
   selector: 'app-dashboard-escola',
-  imports: [CommonModule],
+  imports: [CommonModule, ModalColetaComponent],
   templateUrl: './dashboard-escola.html',
   styleUrl: './dashboard-escola.css',
 })
 export class DashboardEscola implements OnInit {
 
   private service = inject(EscolaService);
+  modalColetaAberto = false;
+
+  abrirModalColeta() {
+    this.modalColetaAberto = true;
+  }
 
   dados = {
     nome: 'Carregando...',
@@ -38,10 +44,5 @@ export class DashboardEscola implements OnInit {
         error: (err) => console.error('Erro ao carregar dashboard', err)
       });
     }
-  }
-
-  solicitarColeta() {
-    alert('Solicitação enviada para o Governo!');
-    // TODO: Implementar integração com governo
   }
 }
