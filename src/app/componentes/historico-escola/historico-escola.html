@@ -1,0 +1,59 @@
+<div class="pagina-historico">
+  <main class="container-principal">
+
+    <div class="titulo-secao">
+      <h2>Histórico de Doações</h2>
+      <p>Acompanhe todas as doações recebidas</p>
+    </div>
+
+    @if (doacoes.length === 0) {
+    <div class="card-vazio">
+      <p>Nenhuma doação recebida ainda.</p>
+    </div>
+    }
+
+    <div class="lista-doacoes">
+      @for (doacao of doacoes; track doacao.id) {
+
+      <div class="card-doacao" (click)="abrirModal(doacao)" style="cursor: pointer;">
+
+        <div class="info-principal">
+          <div class="icone-usuario">
+            <img src="assets/imagens/icon-usuariocinza.png" alt="Usuario">
+          </div>
+
+          <div class="detalhes-texto">
+            <strong class="nome-principal">{{ doacao.usuarioNome || 'Doador Anônimo' }}</strong>
+            <span class="data">{{ doacao.data }}</span>
+
+            <div class="linha-info-extra">
+              <span class="qtd-verde">Quantidade: {{ doacao.quantidade }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="status-doacao">
+          @if (doacao.status === 'PENDENTE' || doacao.status === 'Pendente') {
+          <span class="tag-status amarelo">
+            <img src="assets/imagens/icon-pendente.png" alt=""> Pendente
+          </span>
+          } @else {
+          <span class="tag-status verde">
+            <img src="assets/imagens/icon-check.png" alt=""> Confirmado
+          </span>
+          }
+        </div>
+
+      </div> }
+    </div>
+
+  </main>
+</div>
+
+@if (modalAberto) {
+  <app-modal-validacao-doacao
+    [doacao]="doacaoSelecionada"
+    (fechar)="fecharModal()"
+    (atualizou)="recarregarLista()">
+  </app-modal-validacao-doacao>
+}
