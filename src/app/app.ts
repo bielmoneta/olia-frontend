@@ -34,7 +34,6 @@ export class App {
     const url = this.router.url;
     const logado = sessionStorage.getItem('usuarioLogado') === 'true';
     const ehUsuario = sessionStorage.getItem('tipoUsuario') !== 'ESCOLA';
-
     return logado && ehUsuario && !url.includes('/login');
   }
 
@@ -42,8 +41,6 @@ export class App {
     const url = this.router.url;
     const logado = sessionStorage.getItem('usuarioLogado') === 'true';
     const ehEscola = sessionStorage.getItem('tipoUsuario') === 'ESCOLA';
-
-    // A CORREÇÃO É ESTA PARTE FINAL:
     return logado && ehEscola && !url.includes('/login');
   }
 }
