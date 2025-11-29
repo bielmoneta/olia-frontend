@@ -32,7 +32,7 @@
     "leaflet": "^1.9.4",
     "leaflet-routing-machine": "^3.2.12",
     "ngx-leaflet": "^0.0.16",
-    "ngx-mask": "^20.0.3",
+    "ngx-mask": "^17.1.8",
     "ol": "^10.7.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
