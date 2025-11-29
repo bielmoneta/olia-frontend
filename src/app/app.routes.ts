@@ -11,6 +11,7 @@ import { CadastroEscola } from './componentes/cadastro-escola/cadastro-escola';
 import { DashboardEscola } from './componentes/dashboard-escola/dashboard-escola';
 import { RecompensasEscolaComponent } from './componentes/recompensa-escola/recompensa-escola';
 import { HistoricoEscola } from './componentes/historico-escola/historico-escola';
+import { RankingEscolaComponent } from './componentes/ranking-escola/ranking-escola';
 
 export const routes: Routes = [
   {path: '', component: Inicio  },
@@ -24,5 +25,6 @@ export const routes: Routes = [
   {path: 'cadastro-escola', component: CadastroEscola },
   {path: 'dashboard-escola', component: DashboardEscola},
   {path: 'recompensa-escola', component: RecompensasEscolaComponent},
-  {path: 'historico-escola', component: HistoricoEscola}
+  {path: 'historico-escola', component: HistoricoEscola},
+  {path: 'ranking-escola', component: RankingEscolaComponent}
 ];
