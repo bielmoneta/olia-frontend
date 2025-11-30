@@ -1,0 +1,176 @@
+.pagina-ranking {
+  background-color: #fcfbf8;
+  min-height: calc(100vh - 160px);
+  padding: 30px 5% 100px 5%;
+  font-family: Poppins, sans-serif;
+}
+
+.container-principal {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cabecalho-pagina h2 {
+  color: #004d40;
+  margin: 0 0 5px 0;
+  font-size: 1.4rem;
+}
+
+.cabecalho-pagina p {
+  color: #666;
+  margin: 0 0 25px 0;
+  font-size: 0.9rem;
+}
+
+.card-minha-posicao {
+  background: linear-gradient(90deg, #1b4d3e 0%, #388e3c 100%);
+  border-radius: 12px;
+  padding: 25px 30px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.titulo-sua-posicao {
+  display: block;
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin-bottom: 5px;
+}
+
+.texto-posicao {
+  font-size: 1.5rem;
+}
+
+.info-pontos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.info-pontos img {
+  height: 32px;
+}
+
+.info-pontos span {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.lista-ranking {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.card-item-ranking {
+  background: white;
+  border-radius: 12px;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent;
+}
+
+.card-item-ranking.meu-card {
+  border-color: #689f38;
+  background-color: #f9fdf9;
+}
+
+.conteudo-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.circulo-posicao {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.ouro {
+  background-color: #fdd835;
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(253, 216, 53, 0.4);
+}
+
+.prata {
+  background-color: #bdbdbd;
+  color: #fff;
+}
+
+.bronze {
+  background-color: #d87c33;
+  color: #fff;
+}
+
+.padrao {
+  background-color: #eee;
+  color: #555;
+  font-size: 1rem;
+}
+
+.dados-escola strong {
+  display: block;
+  color: #004d40;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.subtextos {
+  font-size: 0.85rem;
+  color: #777;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.subtextos span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.subtextos img {
+  height: 14px;
+  width: auto;
+  margin-bottom: 1px;
+}
+
+.badge-voce {
+  background-color: #689f38;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .card-item-ranking {
+    padding: 12px;
+  }
+  .circulo-posicao {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+  .dados-escola strong {
+    font-size: 0.9rem;
+  }
+}

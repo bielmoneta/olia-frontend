@@ -13,25 +13,33 @@ export class EscolaService {
     return this.http.post(this.apiUrlEscola, dados);
   }
 
-  fazerLogin(dados: {email: string, senha: string}): Observable<any> {
+  fazerLogin(dados: { email: string; senha: string }): Observable<any> {
     return this.http.post(this.apiUrlLoginEscola, dados);
   }
 
   listar() {
     // O Java retorna um objeto Page { content: [...] }
     // Usamos o pipe(map) para pegar só a lista que está dentro do 'content'
-    return this.http.get<any>(this.apiUrlEscola).pipe(
-      map(resposta => resposta.content)
-    );
+    return this.http.get<any>(this.apiUrlEscola).pipe(map((resposta) => resposta.content));
   }
 
   // Método auxiliar para transformar Endereço em Coordenadas (Geocoding)
   buscarCoordenadas(endereco: string): Observable<any> {
-    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(endereco)}`;
+    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
+      endereco
+    )}`;
     return this.http.get(url);
   }
 
   getDashboard(idEscola: number): Observable<any> {
     return this.http.get(`${this.apiUrlEscola}/dashboard/${idEscola}`);
+  }
+
+  getRanking(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrlEscola}/ranking`);
+  }
+
+  obterMinhaEscola(): Observable<any> {
+    return this.http.get(`${this.apiUrlEscola}/raking`);
   }
 }
