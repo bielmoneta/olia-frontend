@@ -1,0 +1,113 @@
+.pagina-login-governo {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f1ed;
+  padding: 40px 16px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.conteudo-login-governo {
+  width: 100%;
+  max-width: 520px;
+  padding: 10px;
+  text-align: center;
+}
+
+.area-titulo {
+  margin-bottom: 30px;
+}
+
+.avatar-governo img {
+  width: 90px;
+  height: 90px;
+  background-color: #1f9228;
+  border-radius: 50%;
+  margin: 0 auto 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.area-titulo h2 {
+  color: #2c3e3b;
+  margin-top: 12px;
+  font-size: 22px;
+}
+
+.area-titulo p {
+  color: #6d6d6d;
+  font-size: 14px;
+}
+
+.card-login {
+  background: white;
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  margin-top: 10px;
+}
+
+label {
+  text-align: left;
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+  color: #475654;
+}
+
+.campo-input {
+  display: flex;
+  align-items: center;
+  background: #f6f3f0;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 6px;
+}
+
+.campo-input input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+}
+
+.icone-campo img {
+  width: 18px;
+  margin-right: 10px;
+}
+
+.esqueci-senha {
+  text-align: right;
+  margin-top: 10px;
+}
+
+.esqueci-senha a {
+  font-size: 13px;
+  color: #3d6e67;
+  text-decoration: none;
+}
+
+.btn-entrar {
+  width: 100%;
+  margin-top: 22px;
+  padding: 12px;
+  background: #155950;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-entrar:hover {
+  background: #0f4a43;
+}
+
+.texto-restrito {
+  margin-top: 18px;
+  font-size: 13px;
+  color: #707070;
+}
