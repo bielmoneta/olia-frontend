@@ -169,7 +169,7 @@
 
 .barra-preenchida {
   height: 100%;
-  background-color: #9e9e9e;
+  background-color: #689f38;
   border-radius: 6px;
   transition: width 0.5s ease;
 }

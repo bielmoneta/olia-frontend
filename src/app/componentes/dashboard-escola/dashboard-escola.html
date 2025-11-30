@@ -10,7 +10,7 @@
         <span class="trofeu"><img src="assets/imagens/icon-trofeubranco.png" alt="Ranking"></span>
         <div class="info-ranking">
           <span class="ranking-titulo">Ranking</span>
-          <strong>0º lugar</strong>
+          <strong>{{ posicao }}º Lugar</strong>
         </div>
       </div>
     </div>
@@ -63,21 +63,21 @@
 
     <div class="card-secao">
       <h4 class="titulo-secao">
-        <span class="icone-amarelo"><img src="assets/imagens/icon-grafico.png" alt=""></span> Progresso para Próxima Recompensa
+        <span class="icone-amarelo"><img src="assets/imagens/icon-graficopreto.png" alt=""></span>Progresso para Próxima Recompensa
       </h4>
       <p class="subtitulo-secao">
-        Faltam {{ metaPontos - dados.pontos }} pontos para desbloquear
+        Faltam {{ dados.metaPontos - dados.pontos }} pontos para desbloquear
       </p>
 
       <div class="barra-fundo">
         <div class="barra-preenchida"
-             [style.width.%]="(dados.pontos / metaPontos) * 100">
+             [style.width.%]="(dados.pontos / dados.metaPontos) * 100">
         </div>
       </div>
 
       <div class="legenda-barra">
-        <span>0 pts</span>
-        <span>{{ metaPontos }} pts</span>
+        <span>{{ dados.pontos }}</span>
+        <span>{{ dados.metaPontos }} pts</span>
       </div>
     </div>
 

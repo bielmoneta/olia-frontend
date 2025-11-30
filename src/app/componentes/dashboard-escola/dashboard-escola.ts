@@ -10,9 +10,9 @@ import { ModalColetaComponent } from '../modal-agenda-coleta/modal-agenda-coleta
   styleUrl: './dashboard-escola.css',
 })
 export class DashboardEscola implements OnInit {
-
   private service = inject(EscolaService);
   modalColetaAberto = false;
+  posicao: number = 0;
 
   abrirModalColeta() {
     this.modalColetaAberto = true;
@@ -25,10 +25,9 @@ export class DashboardEscola implements OnInit {
     pontos: 0,
     capacidadeMaxima: 100,
     ocupacaoAtual: 0,
-    porcentagemOcupacao: 0
+    porcentagemOcupacao: 0,
+    metaPontos: 500,
   };
-
-  metaPontos = 2000;
 
   ngOnInit() {
     this.carregarDados();
@@ -40,9 +39,20 @@ export class DashboardEscola implements OnInit {
       this.service.getDashboard(+id).subscribe({
         next: (resposta) => {
           this.dados = resposta;
+          this.buscarPosicaoNoRanking();
         },
-        error: (err) => console.error('Erro ao carregar dashboard', err)
+        error: (err) => console.error('Erro ao carregar dashboard', err),
       });
     }
+  }
+
+  buscarPosicaoNoRanking() {
+    this.service.getRanking().subscribe((lista: any[]) => {
+      // Procura o nome da escola atual dentro da lista do ranking
+      const index = lista.findIndex((item) => item.nome === this.dados.nome);
+      if (index !== -1) {
+        this.posicao = index + 1;
+      }
+    });
   }
 }
