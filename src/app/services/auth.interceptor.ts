@@ -1,7 +1,13 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
-  const token = sessionStorage.getItem('auth-token');
+  // 1. Tenta pegar 'auth-token' (Usuário/Escola)
+  let token = sessionStorage.getItem('auth-token');
+
+  // 2. Se não achou, tenta pegar 'token' (Governo)
+  if (!token) {
+    token = sessionStorage.getItem('token');
+  }
 
   // Verifica se a URL é do OpenStreetMap
   const isExternalApi = req.url.includes('nominatim.openstreetmap.org');
