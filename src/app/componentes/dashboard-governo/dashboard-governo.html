@@ -1,0 +1,80 @@
+<div class="pagina-dashboard">
+  <main class="container-principal">
+
+    <div class="cabecalho-pagina">
+      <h2>Controle de Coletas</h2>
+      <p>Gerencie todas as solicitações de coleta</p>
+    </div>
+
+    <div class="grid-resumo">
+
+      <div class="card-resumo amarelo" (click)="mudarFiltro('PENDENTE')" [class.ativo]="filtroAtual === 'PENDENTE'">
+        <span class="label-resumo">
+          <img src="assets/imagens/icon-pendente.png" alt=""> Pendentes
+        </span>
+        <strong>{{ resumo.pendentes }}</strong>
+      </div>
+
+      <div class="card-resumo azul" (click)="mudarFiltro('AGENDADA')" [class.ativo]="filtroAtual === 'AGENDADA'">
+        <span class="label-resumo">
+          <img src="assets/imagens/icon-caminhaoverde.png" alt=""> Agendadas
+        </span>
+        <strong>{{ resumo.agendadas }}</strong>
+      </div>
+
+      <div class="card-resumo verde" (click)="mudarFiltro('CONCLUIDA')" [class.ativo]="filtroAtual === 'CONCLUIDA'">
+        <span class="label-resumo">
+          <img src="assets/imagens/icon-confirmado.png" alt=""> Concluídas
+        </span>
+        <strong>{{ resumo.concluidas }}</strong>
+      </div>
+
+    </div>
+
+    <div class="abas-filtro">
+      <button [class.ativo]="filtroAtual === 'PENDENTE'" (click)="mudarFiltro('PENDENTE')">Pendentes</button>
+      <button [class.ativo]="filtroAtual === 'AGENDADA'" (click)="mudarFiltro('AGENDADA')">Agendadas</button>
+      <button [class.ativo]="filtroAtual === 'CONCLUIDA'" (click)="mudarFiltro('CONCLUIDA')">Concluídas</button>
+    </div>
+
+    <div class="lista-coletas">
+      @for (coleta of coletasFiltradas; track coleta.id) {
+
+      <div class="card-coleta">
+        <div class="cabecalho-card">
+          <h3>{{ coleta.escola }}</h3>
+
+          <span class="badge-status" [ngClass]="coleta.status.toLowerCase()">
+            {{ coleta.status | titlecase }}
+          </span>
+        </div>
+
+        <p class="endereco">{{ coleta.endereco }}</p>
+
+        <div class="detalhes-coleta">
+          <span>Quantidade estimada: <strong>{{ coleta.quantidade }}</strong></span>
+          <span>Data preferida: {{ coleta.dataPreferida }}</span>
+        </div>
+
+        @if (coleta.status === 'PENDENTE') {
+        <button class="btn-agendar" (click)="agendarColeta(coleta)">
+          Agendar Coleta
+        </button>
+        }
+
+        @if (coleta.status === 'AGENDADA') {
+        <button class="btn-concluir" (click)="concluirColeta(coleta)">
+          Confirmar Coleta Realizada
+        </button>
+        }
+      </div>
+
+      }
+
+      @if (coletasFiltradas.length === 0) {
+      <p class="msg-vazio">Nenhuma coleta encontrada nesta categoria.</p>
+      }
+    </div>
+
+  </main>
+</div>

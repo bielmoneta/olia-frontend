@@ -5,11 +5,14 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class GovernoService {
   private http = inject(HttpClient);
+  private apiUrlLogin = 'http://localhost:8080/login/governo';
+  private apiUrlGoverno = 'http://localhost:8080/governo';
 
-  // ajuste a url conforme o endpoint real do seu backend
-  private apiUrlLogin = 'https://olia-backend-production.up.railway.app/login/governo';
-
-  fazerLogin(dados: { email: string, senha: string }): Observable<any> {
+  fazerLogin(dados: { email: string; senha: string }): Observable<any> {
     return this.http.post(this.apiUrlLogin, dados);
+  }
+
+  getImpactoGlobal(): Observable<any> {
+    return this.http.get(`${this.apiUrlGoverno}/impacto`);
   }
 }

@@ -11,11 +11,12 @@ import { CadastroEscola } from './componentes/cadastro-escola/cadastro-escola';
 import { DashboardEscola } from './componentes/dashboard-escola/dashboard-escola';
 import { RecompensasEscolaComponent } from './componentes/recompensa-escola/recompensa-escola';
 import { HistoricoEscola } from './componentes/historico-escola/historico-escola';
-<<<<<<< HEAD
 import { RankingEscolaComponent } from './componentes/ranking-escola/ranking-escola';
-=======
 import { LoginGoverno } from './componentes/login-governo/login-governo';
->>>>>>> ba16e07ed68bcc158a12aa82669f3f95b3ee2166
+import { DashboardGovernoComponent} from './componentes/dashboard-governo/dashboard-governo';
+import { ImpactoGovernoComponent} from './componentes/impacto-governo/impacto-governo';
+import { RecompensaGovernoComponent } from './componentes/recompensa-governo/recompensa-governo';
+import { MensagensGovernoComponent } from './componentes/mensagens-governo/mensagens-governo';
 
 export const routes: Routes = [
   {path: '', component: Inicio  },
@@ -30,9 +31,10 @@ export const routes: Routes = [
   {path: 'dashboard-escola', component: DashboardEscola},
   {path: 'recompensa-escola', component: RecompensasEscolaComponent},
   {path: 'historico-escola', component: HistoricoEscola},
-<<<<<<< HEAD
-  {path: 'ranking-escola', component: RankingEscolaComponent}
-=======
+  {path: 'ranking-escola', component: RankingEscolaComponent},
   {path: 'login-governo', component: LoginGoverno },
->>>>>>> ba16e07ed68bcc158a12aa82669f3f95b3ee2166
+  {path: 'dashboard-governo', component: DashboardGovernoComponent},
+  {path: 'impacto-governo', component: ImpactoGovernoComponent},
+  {path: 'recompensa-governo', component: RecompensaGovernoComponent},
+  {path: 'mensagens-governo', component: MensagensGovernoComponent}
 ];

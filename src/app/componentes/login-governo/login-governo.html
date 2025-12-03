@@ -1,30 +1,27 @@
-<div class="pagina-login-governo">
-  <main class="conteudo-login-governo">
+<div class="pagina-login">
+  <main class="conteudo-login">
 
     <div class="area-titulo">
-      <div class="avatar-governo"><img src="assets/imagens/icon-governo.png" alt="Usuario"></div>
+      <div class="avatar-governo">
+        <img src="assets/imagens/icon-governo.png" alt="Governo">
+      </div>
       <h2>Entrar como Governo</h2>
       <p>Acesso restrito a gestores do programa</p>
     </div>
 
     <div class="card-login">
       <form>
+
         <label>E-mail</label>
         <div class="campo-input">
-          <span class="icone-campo">
-            <img src="assets/imagens/icon-email.png" alt="Email">
-          </span>
-          <input type="email" placeholder="seu@email.com"
-                 [(ngModel)]="loginData.email" name="email">
+          <span class="icone-campo"><img src="assets/imagens/icon-email.png" alt="Email"></span>
+          <input type="email" placeholder="seu@email.com" name="email" [(ngModel)]="loginData.email">
         </div>
 
         <label>Senha</label>
         <div class="campo-input">
-          <span class="icone-campo">
-            <img src="assets/imagens/icon-senha.png" alt="Senha">
-          </span>
-          <input type="password" placeholder="••••••••"
-                 [(ngModel)]="loginData.senha" name="senha">
+          <span class="icone-campo"><img src="assets/imagens/icon-senha.png" alt="Senha"></span>
+          <input type="password" placeholder="••••••••" name="senha" [(ngModel)]="loginData.senha">
         </div>
 
         <div class="esqueci-senha">
@@ -34,8 +31,9 @@
         <button type="button" class="btn-entrar" (click)="fazerLogin()">Entrar</button>
       </form>
 
-      <p class="texto-restrito">Acesso apenas com credenciais pré-aprovadas</p>
-    </div>
+      <div class="divisoria-simples"></div>
+      <p class="texto-rodape">Acesso apenas com credenciais pré-aprovadas</p>
 
+    </div>
   </main>
 </div>

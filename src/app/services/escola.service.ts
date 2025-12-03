@@ -40,6 +40,6 @@ export class EscolaService {
   }
 
   obterMinhaEscola(): Observable<any> {
-    return this.http.get(`${this.apiUrlEscola}/raking`);
+    return this.http.get(`${this.apiUrlEscola}/ranking`);
   }
 }

@@ -31,12 +31,13 @@
 .container-lista {
   width: 400px;
   min-width: 400px;
+  height: 100%;
   background-color: #fcfbf8;
   border-left: 1px solid #e0e0e0;
   display: flex;
   flex-direction: column;
   padding: 20px;
-  box-shadow: -2px 0 10px rgba(0,0,0,0.05);
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.05);
   z-index: 2;
 }
 
@@ -50,6 +51,7 @@
   overflow-y: auto;
   padding-right: 5px;
   flex: 1;
+  min-height: 0;
 }
 
 /* Card e Conteúdo */
@@ -64,7 +66,7 @@
 }
 
 .card-escola:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-color: #689f38;
 }
 
@@ -81,7 +83,8 @@
 }
 
 /* Alinhamento dos ícones pequenos */
-.distancia, .horario {
+.distancia,
+.horario {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -89,7 +92,8 @@
   color: #666;
 }
 
-.distancia img, .horario img {
+.distancia img,
+.horario img {
   height: 14px; /* Tamanho controlado dos ícones */
   width: auto;
   opacity: 0.7;
@@ -113,7 +117,7 @@
 
 /* O texto inicial (ex: "Disponível:") não deve quebrar linha */
 .status-capacidade > span:first-child {
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
 .barra-fundo {
@@ -170,4 +174,50 @@
   color: #999;
   cursor: not-allowed; /* Ícone de bloqueio do mouse */
   border: 1px solid #ccc;
+}
+
+/* --- RESPONSIVIDADE PARA CELULAR (Telas menores que 768px) --- */
+@media (max-width: 768px) {
+  /* 1. Muda de Lado-a-Lado para Um-em-cima-do-outro */
+  .layout-dividido {
+    flex-direction: column;
+    height: calc(100vh - 140px); /* Ajuste fino para mobile se precisar */
+  }
+
+  /* 2. O Mapa fica no topo */
+  .container-mapa {
+    flex: none; /* Desliga o flex grow automático */
+    height: 45%; /* O mapa ocupa 45% da altura da tela */
+    width: 100%;
+  }
+
+  /* 3. A Lista fica embaixo */
+  .container-lista {
+    flex: 1; /* Ocupa o restante da altura (55%) */
+
+    /* Reseta a largura fixa de 400px para ocupar a tela toda */
+    width: 100%;
+    min-width: 0;
+
+    /* Troca a borda da esquerda para cima */
+    border-left: none;
+    border-top: 1px solid #e0e0e0;
+
+    /* Sombra para cima para destacar que é uma lista deslizável */
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+  }
+
+  /* Ajuste no título para economizar espaço */
+  .titulo-lista {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  /* Ajuste nos filtros flutuantes */
+  .filtro-flutuante {
+    top: 10px;
+    left: 10px;
+  }
 }

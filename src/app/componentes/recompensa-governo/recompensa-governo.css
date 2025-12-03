@@ -1,0 +1,304 @@
+.pagina-recompensa {
+  background-color: #f5f5f5; 
+  min-height: calc(100vh - 160px);
+  padding: 30px 5% 100px 5%;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+.container-principal {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.cabecalho-pagina h2 {
+  color: #004d40; /* Verde Petróleo */
+  margin: 0 0 5px 0;
+  font-size: 1.5rem;
+}
+
+.cabecalho-pagina p {
+  color: #607d8b; /* Cinza azulado */
+  margin: 0 0 30px 0;
+  font-size: 0.95rem;
+}
+
+/* --- LISTA DE SOLICITAÇÕES (CARDS GRANDES) --- */
+.card-solicitacao {
+  background: white;
+  border-radius: 12px;
+  padding: 20px 25px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+
+  display: flex;
+  align-items: center;
+  gap: 25px; /* Espaço entre ícone, texto e botões */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-solicitacao:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Ícone do Prêmio (Quadrado arredondado) */
+.icone-premio-wrapper {
+  width: 60px;
+  height: 60px;
+  background-color: #fff8e1; /* Amarelo bem claro */
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* Não deixa amassar */
+}
+
+.icone-premio-wrapper img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  opacity: 0.9;
+}
+
+/* Informações Centrais */
+.info-solicitacao {
+  flex: 1; /* Ocupa todo o espaço disponível no meio */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.topo-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.nome-escola {
+  font-size: 0.8rem;
+  color: #555;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-pendente {
+  background-color: #fff3e0; /* Laranja claro */
+  color: #f57c00; /* Laranja escuro */
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nome-premio {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #004d40;
+}
+
+.detalhes-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 5px;
+}
+
+.pontos {
+  color: #f9a825; /* Amarelo escuro */
+  font-weight: bold;
+}
+
+.separador {
+  color: #ccc;
+}
+
+/* --- BOTÕES DE AÇÃO --- */
+.acoes {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-acao {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+/* Botão Aprovar (Verde Sólido) */
+.btn-aprovar {
+  background-color: #689f38;
+  color: white;
+  border: none;
+}
+.btn-aprovar:hover {
+  background-color: #558b2f;
+}
+
+/* Botão Negar (Branco com borda vermelha) */
+.btn-negar {
+  background-color: white;
+  border: 1px solid #ef9a9a;
+  color: #d32f2f;
+}
+.btn-negar:hover {
+  background-color: #ffebee;
+  border-color: #d32f2f;
+}
+
+.icone-btn {
+  font-size: 1.1rem;
+  line-height: 0;
+}
+
+/* --- SEPARADOR --- */
+.separador-secao {
+  border: 0;
+  border-top: 1px solid #e0e0e0;
+  margin: 40px 0;
+}
+
+/* --- CATÁLOGO DE PRÊMIOS --- */
+.cabecalho-catalogo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cabecalho-catalogo h3 {
+  color: #37474f;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+/* Botão Novo Prêmio */
+.btn-adicionar {
+  background-color: #004d40; /* Verde escuro */
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.btn-adicionar:hover {
+  background-color: #00352c;
+}
+
+/* Grid do Catálogo */
+.grid-catalogo {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsivo */
+  gap: 20px;
+}
+
+.card-item {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+  transition: transform 0.2s;
+}
+
+.card-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card-item img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.info-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-item strong {
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 2px;
+}
+
+.info-item span {
+  font-size: 0.85rem;
+  color: #f9a825; /* Amarelo */
+  font-weight: bold;
+}
+
+/* Botão Editar (Lápis) */
+.btn-editar {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.2rem;
+  opacity: 0.4;
+  padding: 5px;
+  transition: opacity 0.2s;
+}
+
+.btn-editar:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Mensagem Vazia */
+.msg-vazio {
+  text-align: center;
+  padding: 40px;
+  color: #90a4ae;
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .card-solicitacao {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .acoes {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .btn-acao {
+    justify-content: center;
+  }
+
+  .topo-info {
+    width: 100%;
+  }
+}

@@ -1,0 +1,88 @@
+<div class="pagina-recompensa">
+  <main class="container-principal">
+
+    <div class="cabecalho-pagina">
+      <h2>Gestão de Recompensas</h2>
+      <p>Aprove ou negue solicitações de recompensas</p>
+    </div>
+
+    @if (solicitacoes.length > 0) {
+    <div class="lista-solicitacoes">
+
+      @for (solicitacao of solicitacoes; track solicitacao.id) {
+      <div class="card-solicitacao">
+
+        <div class="icone-premio-wrapper">
+          <img src="assets/imagens/icon-presente.png" alt="Prêmio">
+        </div>
+
+        <div class="info-solicitacao">
+          <div class="topo-info">
+            <span class="nome-escola">{{ solicitacao.escola }}</span>
+            <span class="badge-pendente">⏳ Pendente</span>
+          </div>
+
+          <h3 class="nome-premio">{{ solicitacao.premio }}</h3>
+
+          <div class="detalhes-meta">
+            <span class="pontos">⭐ {{ solicitacao.custo }} pts</span>
+            <span class="separador">•</span>
+            <span class="data">📅 {{ solicitacao.data }}</span>
+          </div>
+        </div>
+
+        <div class="acoes">
+          <button class="btn-acao btn-negar" (click)="negar(solicitacao)">
+            <span class="icone-btn">✕</span> Negar
+          </button>
+          <button class="btn-acao btn-aprovar" (click)="aprovar(solicitacao)">
+            <span class="icone-btn">✓</span> Aprovar
+          </button>
+        </div>
+
+      </div>
+      }
+
+    </div>
+    } @else {
+    <div class="msg-vazio">
+      <img src="assets/imagens/icon-check-verde.png" alt="Ok" style="opacity: 0.5; height: 40px;">
+      <p>Tudo limpo! Nenhuma solicitação pendente.</p>
+    </div>
+    }
+
+    <hr class="separador">
+
+    <div class="cabecalho-catalogo">
+      <h3>Catálogo de Prêmios Ativos</h3>
+
+      <button class="btn-adicionar" (click)="adicionarNovoPremio()">
+        + Novo Prêmio
+      </button>
+    </div>
+
+    <div class="grid-catalogo">
+      @for (item of catalogo; track item.id) {
+      <div class="card-item">
+        <img [src]="item.icone" alt="Icone">
+
+        <div class="info-item">
+          <strong>{{ item.titulo }}</strong>
+          <span>⭐ {{ item.custo }}</span>
+        </div>
+
+        <button class="btn-editar" (click)="editarPremio(item)">✏️</button>
+      </div>
+      }
+    </div>
+
+    @if (modalAberto) {
+      <app-modal-recompensa
+        [recompensa]="recompensaSelecionada"
+        (fechar)="fecharModal()"
+        (salvar)="salvarDados($event)">
+      </app-modal-recompensa>
+    }
+
+  </main>
+</div>

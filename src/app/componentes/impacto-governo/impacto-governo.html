@@ -1,0 +1,81 @@
+<div class="pagina-impacto">
+  <main class="container-principal">
+
+    <div class="cabecalho-pagina">
+      <h2>Impacto Ambiental</h2>
+      <p>Estatísticas gerais do programa</p>
+    </div>
+
+    <div class="grid-resumo">
+      <div class="card-stat">
+        <span class="icone">
+          <img src="assets/imagens/icon-gotaverde2.png" alt="Gota Verde">
+          Óleo Reciclado
+        </span>
+        <strong>{{ resumo.oleoReciclado | number: '1.0-2' }}L</strong>
+      </div>
+
+      <div class="card-stat">
+        <span class="icone">
+          <img src="assets/imagens/icon-sabao.png" alt="Sabao">
+          Sabão Produzido
+        </span>
+        <strong class="destaque-amarelo">{{ resumo.sabaoProduzido | number:'1.0-0' }}</strong>
+      </div>
+
+      <div class="card-stat">
+        <span class="icone">
+          <img src="assets/imagens/icon-escolacolorida.png" alt="Escola">
+          Escolas
+        </span>
+        <strong>{{ resumo.escolasAtivas }}</strong>
+      </div>
+
+      <div class="card-stat">
+        <span class="icone">
+          <img src="assets/imagens/icon-beneficiarios.png" alt="Beneficiarios">
+          Beneficiários
+        </span>
+        <strong class="destaque-verde">{{ resumo.beneficiarios }}</strong>
+      </div>
+    </div>
+
+    <div class="card-ranking">
+      <h3>
+        <img src="assets/imagens/icon-graficocolorido.png" alt="Grafico">
+        Ranking de Escolas
+      </h3>
+      <p>Escolas com maior pontuação</p>
+
+      <div class="lista-grafico">
+        @for (escola of ranking; track escola.nome; let i = $index) {
+
+        <div class="item-ranking">
+
+          <div class="bolinha-posicao" [class.primeiro]="i === 0">{{ i + 1 }}</div>
+
+          <div class="barra-container">
+            <div class="info-barra">
+              <strong>{{ escola.nome }}</strong>
+              <span>
+                <img src="assets/imagens/icon-estrelaamarela.png" alt="Estrela">
+                {{ escola.pontos | number }} pontos
+              </span>
+            </div>
+
+            <div class="fundo-barra">
+              <div class="barra-preenchida" [style.width.%]="escola.percentual"></div>
+            </div>
+          </div>
+
+        </div> }
+      </div>
+    </div>
+
+    <button class="btn-exportar" (click)="exportarRelatorio()">
+      <img src="assets/imagens/icon-exportar.png" alt="Exportar">
+      Exportar Relatório
+    </button>
+
+  </main>
+</div>
