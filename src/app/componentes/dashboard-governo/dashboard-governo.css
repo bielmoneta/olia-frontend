@@ -194,3 +194,19 @@
   color: #999;
   margin-top: 40px;
 }
+
+.btn-concluir {
+  background-color: #689f38;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.btn-concluir:hover {
+  background-color: #035243;
+}
