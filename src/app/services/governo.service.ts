@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class GovernoService {
   private http = inject(HttpClient);
-  private apiUrlLogin = 'http://localhost:8080/login/governo';
-  private apiUrlGoverno = 'http://localhost:8080/governo';
+  private apiUrlLogin = 'https://olia-backend-production.up.railway.app/login/governo';
+  private apiUrlGoverno = 'https://olia-backend-production.up.railway.app/governo';
 
   fazerLogin(dados: { email: string; senha: string }): Observable<any> {
     return this.http.post(this.apiUrlLogin, dados);
