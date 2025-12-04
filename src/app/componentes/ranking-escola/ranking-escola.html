@@ -1,0 +1,52 @@
+<div class="pagina-ranking">
+  <main class="container-principal">
+
+    <div class="cabecalho-pagina">
+      <h2>Ranking de Escolas</h2>
+      <p>Veja como sua escola está se saindo</p>
+    </div>
+
+    <div class="card-minha-posicao">
+      <div class="info-topo">
+        <span class="titulo-sua-posicao">Sua Posição</span>
+        <strong class="texto-posicao">
+          {{ minhaEscola.posicao > 0 ? minhaEscola.posicao + 'º Lugar' : 'Sem ranking' }}
+        </strong>
+      </div>
+
+      <div class="info-pontos">
+        <img src="assets/imagens/icon-trofeubranco.png" alt="Troféu">
+        <span>{{ minhaEscola.pontos }} pontos</span>
+      </div>
+    </div>
+
+    <div class="lista-ranking">
+      @for (item of ranking; track item.posicao) {
+
+        <div class="card-item-ranking" [class.meu-card]="item.ehMinhaEscola">
+
+          <div class="conteudo-card">
+
+            <div class="circulo-posicao" [ngClass]="getCorMedalha(item.posicao)">
+              {{ item.posicao }}º
+            </div>
+
+            <div class="dados-escola">
+              <strong>{{ item.nome }}</strong>
+              <div class="subtextos">
+                <span><img src="assets/imagens/icon-estrelaamarela.png" alt="Estrela"> {{ item.pontos }} pontos</span>
+                <span><img src="assets/imagens/icon-gotaverde2.png" alt="Gota Verde"> {{ item.litros }}L</span>
+              </div>
+            </div>
+          </div>
+
+          @if (item.ehMinhaEscola) {
+            <span class="badge-voce">Você</span>
+          }
+
+        </div>
+      }
+    </div>
+
+  </main>
+</div>

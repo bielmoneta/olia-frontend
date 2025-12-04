@@ -3,13 +3,17 @@
 <router-outlet></router-outlet>
 
 @if (isPaginaInicial()) {
-  <app-rodape></app-rodape>
+<app-rodape></app-rodape>
 }
 
 @if (isUsuarioComum()) {
-  <app-rodape-usuario></app-rodape-usuario>
+<app-rodape-usuario></app-rodape-usuario>
 }
 
 @if (isEscola()) {
-  <app-rodape-escola></app-rodape-escola>
+<app-rodape-escola></app-rodape-escola>
+}
+
+@if (isGoverno()) {
+<app-rodape-governo></app-rodape-governo>
 }

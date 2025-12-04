@@ -1,0 +1,30 @@
+<div class="overlay" (click)="fecharModal()">
+  <div class="modal-card" (click)="$event.stopPropagation()">
+
+    <div class="cabecalho">
+      <h3>{{ tituloModal }}</h3>
+      <button class="btn-close" (click)="fecharModal()">&times;</button>
+    </div>
+
+    <div class="form-body">
+      <label>Nome do Prêmio</label>
+      <input type="text" [(ngModel)]="dadosForm.titulo" placeholder="Ex: Computadores">
+
+      <label>Custo (Pontos)</label>
+      <input type="number" [(ngModel)]="dadosForm.custo" placeholder="Ex: 5000">
+
+      <label>Ícone</label>
+      <select [(ngModel)]="dadosForm.icone">
+        <option value="assets/imagens/icon-presente.png">🎁 Presente</option>
+        <option value="assets/imagens/icon-pc.png">💻 Computador</option>
+        <option value="assets/imagens/icon-livros.png">📚 Livros</option>
+      </select>
+    </div>
+
+    <div class="botoes">
+      <button class="btn-cancelar" (click)="fecharModal()">Cancelar</button>
+      <button class="btn-salvar" (click)="confirmar()">Salvar</button>
+    </div>
+
+  </div>
+</div>

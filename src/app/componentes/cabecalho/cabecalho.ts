@@ -14,7 +14,20 @@ export class Cabecalho {
   private location = inject(Location); //injeta o location para manipular o histórico de navegação
 
   getNomeUsuario(): string {
-    return sessionStorage.getItem('nomeUsuario') || 'Usuário';
+    // Tenta pegar o nome salvo
+    const nomeSalvo = sessionStorage.getItem('nomeUsuario');
+    if (nomeSalvo && nomeSalvo !== 'null') {
+      return nomeSalvo;
+    }
+    // Se não tiver nome, verifica o TIPO de usuário para dar um nome padrão melhor
+    const tipo = sessionStorage.getItem('tipoUsuario');
+    if (tipo === 'GOVERNO') {
+      return 'Gestor';
+    }
+    if (tipo === 'ESCOLA') {
+      return 'Instituição de Ensino';
+    }
+    return 'Usuário';
   }
 
   isPaginaLogin(): boolean {
@@ -25,26 +38,31 @@ export class Cabecalho {
   voltar() {
     const urlAtual = this.router.url;
 
-  // Se estiver na página de cadastro de usuário
+    // Se estiver na página de cadastro de usuário
     if (urlAtual === '/cadastro-usuario') {
-    // ele volta para o login de usuário.
-    this.router.navigate(['/login-usuario']);
+      // ele volta para o login de usuário.
+      this.router.navigate(['/login-usuario']);
     }
-  //  Se estiver na página de login de usuário
+    //  Se estiver na página de login de usuário
     else if (urlAtual === '/login-usuario') {
-    // ele volta para o inicio
-    this.router.navigate(['/']);
+      // ele volta para o inicio
+      this.router.navigate(['/']);
     }
     // TODO: adicionar regras para escola e governo)
     // Para qualquer outro caso
-      else {
-    this.location.back();
-      }
+    else {
+      this.location.back();
     }
+  }
 
   isPaginaApp(): boolean {
     const url = this.router.url;
-    return url.includes('/mapa-usuario') || url.includes('/perfil-usuario') || url.includes('/historico-usuario') || url.includes('/recompensa-usuario');
+    return (
+      url.includes('/mapa-usuario') ||
+      url.includes('/perfil-usuario') ||
+      url.includes('/historico-usuario') ||
+      url.includes('/recompensa-usuario')
+    );
   }
 
   isLogado(): boolean {

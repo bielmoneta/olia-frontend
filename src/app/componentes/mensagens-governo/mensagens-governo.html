@@ -1,0 +1,31 @@
+<div class="pagina-mensagens">
+  <main class="container-principal">
+
+    <div class="cabecalho-pagina">
+      <h2>Comunicação</h2>
+      <p>Envie notificações para escolas e usuários</p>
+    </div>
+
+    <div class="card-formulario">
+      <h3>Nova Mensagem</h3>
+      <p class="subtitulo">Envie atualizações e avisos importantes</p>
+
+      <div class="form-group">
+        <label>Título</label>
+        <input type="text" [(ngModel)]="mensagem.titulo" placeholder="Ex: Nova campanha de coleta" class="input-padrao">
+      </div>
+
+      <div class="form-group">
+        <label>Mensagem</label>
+        <textarea [(ngModel)]="mensagem.corpo" placeholder="Digite sua mensagem aqui..." rows="6"
+          class="textarea-padrao"></textarea>
+      </div>
+
+      <button class="btn-enviar" (click)="enviarMensagem()">
+        <span class="icone-aviao"><img src="assets/imagens/icon-mensagembranco.png" alt=""></span> Enviar para Todas as Escolas
+      </button>
+
+    </div>
+
+  </main>
+</div>

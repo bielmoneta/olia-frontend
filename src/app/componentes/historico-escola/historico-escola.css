@@ -1,0 +1,121 @@
+.pagina-historico {
+  background-color: #fcfbf8;
+  min-height: calc(100vh - 160px);
+  padding: 30px 5% 120px 5%;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container-principal {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.titulo-secao h2 {
+  color: #004d40;
+  margin-bottom: 5px;
+}
+
+.titulo-secao p {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.card-doacao {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+}
+
+.info-principal {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icone-usuario {
+  width: 50px;
+  height: 50px;
+  background-color: #e8f5e9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icone-usuario img {
+  height: 24px;
+  opacity: 1;
+}
+
+.detalhes-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nome-principal {
+  font-size: 1rem;
+  color: #333;
+}
+
+.data {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.linha-info-extra {
+  font-size: 0.85rem;
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.qtd-verde {
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.codigo-cinza {
+  color: #888;
+  border-left: 1px solid #ccc;
+  padding-left: 8px;
+}
+
+.tag-status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.tag-status img {
+  height: 12px;
+}
+
+.amarelo {
+  background-color: #fff8e1;
+  color: #f57f17;
+}
+
+.verde {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.card-vazio {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+  background: white;
+  border-radius: 12px;
+  border: 1px dashed #ccc;
+}

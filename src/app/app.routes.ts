@@ -9,6 +9,14 @@ import { PerfilUsuario } from './componentes/perfil-usuario/perfil-usuario';
 import { LoginEscola } from './componentes/login-escola/login-escola';
 import { CadastroEscola } from './componentes/cadastro-escola/cadastro-escola';
 import { DashboardEscola } from './componentes/dashboard-escola/dashboard-escola';
+import { RecompensasEscolaComponent } from './componentes/recompensa-escola/recompensa-escola';
+import { HistoricoEscola } from './componentes/historico-escola/historico-escola';
+import { RankingEscolaComponent } from './componentes/ranking-escola/ranking-escola';
+import { LoginGoverno } from './componentes/login-governo/login-governo';
+import { DashboardGovernoComponent} from './componentes/dashboard-governo/dashboard-governo';
+import { ImpactoGovernoComponent} from './componentes/impacto-governo/impacto-governo';
+import { RecompensaGovernoComponent } from './componentes/recompensa-governo/recompensa-governo';
+import { MensagensGovernoComponent } from './componentes/mensagens-governo/mensagens-governo';
 
 export const routes: Routes = [
   {path: '', component: Inicio  },
@@ -20,5 +28,13 @@ export const routes: Routes = [
   {path: 'perfil-usuario', component: PerfilUsuario },
   {path: 'login-escola', component: LoginEscola },
   {path: 'cadastro-escola', component: CadastroEscola },
-  {path: 'dashboard-escola', component: DashboardEscola}
+  {path: 'dashboard-escola', component: DashboardEscola},
+  {path: 'recompensa-escola', component: RecompensasEscolaComponent},
+  {path: 'historico-escola', component: HistoricoEscola},
+  {path: 'ranking-escola', component: RankingEscolaComponent},
+  {path: 'login-governo', component: LoginGoverno },
+  {path: 'dashboard-governo', component: DashboardGovernoComponent},
+  {path: 'impacto-governo', component: ImpactoGovernoComponent},
+  {path: 'recompensa-governo', component: RecompensaGovernoComponent},
+  {path: 'mensagens-governo', component: MensagensGovernoComponent}
 ];

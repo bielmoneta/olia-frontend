@@ -6,6 +6,7 @@ import { Rodape } from './componentes/rodape/rodape';
 import { RodapeUsuario } from './componentes/rodape-usuario/rodape-usuario';
 import { RodapeEscola } from './componentes/rodape-escola/rodape-escola';
 import { LeafletModule } from '@bluehalo/ngx-leaflet';
+import { RodapeGoverno } from './componentes/rodape-governo/rodape-governo';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ import { LeafletModule } from '@bluehalo/ngx-leaflet';
     RouterModule,
     LeafletModule,
     RodapeEscola,
+    RodapeGoverno,
   ],
   templateUrl: './app.html',
   styleUrl: './app.css',
@@ -34,7 +36,6 @@ export class App {
     const url = this.router.url;
     const logado = sessionStorage.getItem('usuarioLogado') === 'true';
     const ehUsuario = sessionStorage.getItem('tipoUsuario') !== 'ESCOLA';
-
     return logado && ehUsuario && !url.includes('/login');
   }
 
@@ -42,8 +43,13 @@ export class App {
     const url = this.router.url;
     const logado = sessionStorage.getItem('usuarioLogado') === 'true';
     const ehEscola = sessionStorage.getItem('tipoUsuario') === 'ESCOLA';
-
-    // A CORREÇÃO É ESTA PARTE FINAL:
     return logado && ehEscola && !url.includes('/login');
+  }
+
+  isGoverno(): boolean {
+    const url = this.router.url;
+    const logado = sessionStorage.getItem('usuarioLogado') === 'true';
+    const ehGoverno = sessionStorage.getItem('tipoUsuario') === 'GOVERNO';
+    return logado && ehGoverno && !url.includes('/login');
   }
 }

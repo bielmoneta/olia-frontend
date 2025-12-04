@@ -1,0 +1,214 @@
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-card {
+  background: white;
+  width: 90%;
+  max-width: 420px;
+  border-radius: 20px;
+  padding: 30px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  animation: slideUp 0.3s ease;
+}
+
+.btn-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #999;
+  cursor: pointer;
+}
+
+/* Cabeçalho */
+.cabecalho-modal {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.icone-topo {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.img-sucesso {
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  color: #004d40;
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.texto-verde {
+  color: #2e7d32;
+}
+
+p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.info-resumo {
+  background: #f7f6f2;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.linha {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.linha strong {
+  color: #333;
+}
+
+label {
+  display: block;
+  color: #004d40;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  margin-top: 15px;
+}
+
+.input-codigo {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-sizing: border-box;
+}
+
+.input-codigo:focus {
+  border-color: #689f38;
+  outline: none;
+}
+
+.input-qtd-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 5px 15px;
+}
+
+.input-qtd {
+  flex: 1;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #004d40;
+  text-align: right;
+  outline: none;
+}
+
+.msg-erro {
+  color: #d32f2f;
+  font-size: 0.85rem;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.btn-confirmar {
+  width: 100%;
+  background: #689f38;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 25px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-confirmar:hover {
+  background: #558b2f;
+}
+
+.recibo-card {
+  border: 1px dashed #689f38;
+  background: #f1f8e9;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.linha-recibo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.mono {
+  font-family: monospace;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.badge-sucesso {
+  background: #c8e6c9;
+  color: #2e7d32;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.btn-fechar {
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #666;
+  font-weight: bold;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

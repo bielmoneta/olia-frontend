@@ -4,14 +4,21 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { UsuarioService } from '../../services/usuario.service';
 import { DadosCadastroUsuario } from '../../modelos-java/dados-cadastro-usuario';
-import { NgxMaskDirective } from 'ngx-mask';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @Component({
   selector: 'app-cadastro-usuario',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, NgxMaskDirective],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterLink,
+    NgxMaskDirective,
+    NgxMaskPipe
+  ],
   templateUrl: './cadastro-usuario.html',
   styleUrl: './cadastro-usuario.css',
+  providers: [provideNgxMask()]
 })
 export class CadastroUsuario {
   private service = inject(UsuarioService);

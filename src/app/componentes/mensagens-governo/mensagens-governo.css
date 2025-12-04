@@ -1,0 +1,110 @@
+.pagina-mensagens {
+  background-color: #f5f5f5;
+  min-height: calc(100vh - 160px);
+  padding: 30px 5% 100px 5%;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container-principal {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cabecalho-pagina h2 {
+  color: #004d40;
+  margin: 0 0 5px 0;
+}
+.cabecalho-pagina p {
+  color: #607d8b;
+  margin: 0 0 25px 0;
+  font-size: 0.9rem;
+}
+
+/* Card do Formulário */
+.card-formulario {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card-formulario h3 {
+  margin: 0;
+  color: #37474f;
+  font-size: 1.2rem;
+}
+.subtitulo {
+  margin: 5px 0 30px 0;
+  color: #78909c;
+  font-size: 0.9rem;
+}
+
+/* Inputs */
+.form-group {
+  margin-bottom: 20px;
+}
+label {
+  display: block;
+  font-weight: 600;
+  color: #004d40;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.input-padrao,
+.textarea-padrao {
+  width: 100%;
+  padding: 15px;
+  background-color: #f9f9f9; /* Fundo cinza bem claro */
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #333;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.input-padrao:focus,
+.textarea-padrao:focus {
+  border-color: #689f38; /* Verde ao focar */
+  background-color: white;
+}
+
+.textarea-padrao {
+  resize: vertical; /* Permite aumentar altura */
+}
+
+.btn-enviar {
+  width: 100%;
+  padding: 15px;
+  background-color: #558b2f;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-enviar:hover {
+  background-color: #33691e;
+}
+
+.icone-aviao {
+  display: flex;
+  align-items: center;
+  line-height: 0;
+  margin-bottom: 0;
+}
+
+.icone-aviao img {
+  width: 24px;
+  height: 24px;
+}

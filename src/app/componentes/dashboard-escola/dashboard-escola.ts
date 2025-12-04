@@ -1,16 +1,22 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EscolaService } from '../../services/escola.service';
+import { ModalColetaComponent } from '../modal-agenda-coleta/modal-agenda-coleta';
 
 @Component({
   selector: 'app-dashboard-escola',
-  imports: [CommonModule],
+  imports: [CommonModule, ModalColetaComponent],
   templateUrl: './dashboard-escola.html',
   styleUrl: './dashboard-escola.css',
 })
 export class DashboardEscola implements OnInit {
-
   private service = inject(EscolaService);
+  modalColetaAberto = false;
+  posicao: number = 0;
+
+  abrirModalColeta() {
+    this.modalColetaAberto = true;
+  }
 
   dados = {
     nome: 'Carregando...',
@@ -19,10 +25,9 @@ export class DashboardEscola implements OnInit {
     pontos: 0,
     capacidadeMaxima: 100,
     ocupacaoAtual: 0,
-    porcentagemOcupacao: 0
+    porcentagemOcupacao: 0,
+    metaPontos: 500,
   };
-
-  metaPontos = 2000;
 
   ngOnInit() {
     this.carregarDados();
@@ -34,14 +39,20 @@ export class DashboardEscola implements OnInit {
       this.service.getDashboard(+id).subscribe({
         next: (resposta) => {
           this.dados = resposta;
+          this.buscarPosicaoNoRanking();
         },
-        error: (err) => console.error('Erro ao carregar dashboard', err)
+        error: (err) => console.error('Erro ao carregar dashboard', err),
       });
     }
   }
 
-  solicitarColeta() {
-    alert('Solicitação enviada para o Governo!');
-    // TODO: Implementar integração com governo
+  buscarPosicaoNoRanking() {
+    this.service.getRanking().subscribe((lista: any[]) => {
+      // Procura o nome da escola atual dentro da lista do ranking
+      const index = lista.findIndex((item) => item.nome === this.dados.nome);
+      if (index !== -1) {
+        this.posicao = index + 1;
+      }
+    });
   }
 }

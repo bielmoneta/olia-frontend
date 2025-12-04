@@ -25,6 +25,7 @@ export class LoginUsuario {
         sessionStorage.setItem('auth-token', resposta.token);
         sessionStorage.setItem('usuarioLogado', 'true');
         sessionStorage.setItem('nomeUsuario', resposta.nome);
+        sessionStorage.setItem('tipoUsuario', 'USUARIO');
         sessionStorage.setItem('idUsuario', resposta.id);
         this.router.navigate(['/mapa-usuario']);
       },

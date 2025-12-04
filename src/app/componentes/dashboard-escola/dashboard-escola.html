@@ -7,10 +7,10 @@
         <p>Continue coletando óleo e acumulando recompensas!</p>
       </div>
       <div class="badge-ranking">
-        <span class="trofeu"><img src="assets/imagens/icon-trofeu.png" alt="Ranking"></span>
+        <span class="trofeu"><img src="assets/imagens/icon-trofeubranco.png" alt="Ranking"></span>
         <div class="info-ranking">
           <span class="ranking-titulo">Ranking</span>
-          <strong>0º lugar</strong>
+          <strong>{{ posicao }}º Lugar</strong>
         </div>
       </div>
     </div>
@@ -37,7 +37,8 @@
 
     <div class="card-secao">
       <h4 class="titulo-secao">
-        <span class="icone-secao"><img src="assets/imagens/icon-armazenamento.png" alt="Capacidade"></span> Capacidade de Armazenamento
+        <span class="icone-secao"><img src="assets/imagens/icon-armazenamento.png" alt="Capacidade"></span> Capacidade
+        de Armazenamento
       </h4>
       <p class="subtitulo-secao">Status atual do reservatório</p>
 
@@ -57,29 +58,38 @@
       </h4>
       <p class="subtitulo-secao branca">Agende a visita do governo para coleta</p>
 
-      <button class="btn-agendar" (click)="solicitarColeta()"> <img src="assets/imagens/icon-agendaverde.png" alt="Agenda">Agendar Coleta
+      <button class="btn-agendar" (click)="abrirModalColeta()"> <img src="assets/imagens/icon-agendaverde.png"
+          alt="Agenda">Agendar Coleta
       </button>
     </div>
 
     <div class="card-secao">
       <h4 class="titulo-secao">
-        <span class="icone-amarelo"><img src="assets/imagens/icon-grafico.png" alt=""></span> Progresso para Próxima Recompensa
+        <span class="icone-amarelo"><img src="assets/imagens/icon-graficopreto.png" alt=""></span>Progresso para Próxima
+        Recompensa
       </h4>
       <p class="subtitulo-secao">
-        Faltam {{ metaPontos - dados.pontos }} pontos para desbloquear
+        @if (dados.pontos >= dados.metaPontos) {
+        <span class="meta-batida">🎉 Meta batida! Parabéns!</span>
+        } @else {
+        Faltam {{ dados.metaPontos - dados.pontos }} pontos para desbloquear
+        }
       </p>
 
       <div class="barra-fundo">
-        <div class="barra-preenchida"
-             [style.width.%]="(dados.pontos / metaPontos) * 100">
+        <div class="barra-preenchida" [style.width.%]="(dados.pontos / dados.metaPontos) * 100">
         </div>
       </div>
 
       <div class="legenda-barra">
-        <span>0 pts</span>
-        <span>{{ metaPontos }} pts</span>
+        <span>{{ dados.pontos }}</span>
+        <span>{{ dados.metaPontos }} pts</span>
       </div>
     </div>
 
   </main>
 </div>
+
+@if (modalColetaAberto) {
+<app-modal-coleta (fechar)="modalColetaAberto = false"></app-modal-coleta>
+}

@@ -69,7 +69,7 @@ export class PerfilUsuario implements OnInit {
         let litros = 0;
 
         listaDoacoes.forEach((d: any) => {
-          if (d.status === 'CONFIRMADO' || d.status === 'Confirmado') {
+          if (d.status === 'CONCLUIDO' || d.status === 'Concluido') {
           // Remove o "L" e transforma em número
           const qtdNumerica = parseFloat(d.quantidade.replace('L', ''));
           // Soma apenas se for um número válido
