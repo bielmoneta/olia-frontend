@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 export class RecompensaService {
 
   private http = inject(HttpClient);
-  private readonly apiUrlRecompensa = 'http://localhost:8080/recompensas';
+  private readonly apiUrlRecompensa = 'https://olia-backend-production.up.railway.app/recompensas';
 
   // Lista todos os prêmios ativos (Para Escola e Governo)
   listarTodas(): Observable<any[]> {

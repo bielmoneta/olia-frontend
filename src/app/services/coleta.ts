@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ColetaService {
   private http = inject(HttpClient);
-  private API = 'http://localhost:8080/coletas';
+  private API = 'https://olia-backend-production.up.railway.app/coletas';
 
   // Função para pegar o token e criar o cabeçalho de autorização
   private getAuthHeaders() {
