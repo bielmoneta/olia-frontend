@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { RouterLink, Router } from '@angular/router';
+import { Component, inject, OnInit } from '@angular/core';
+import { RouterLink, Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { UsuarioService } from '../../services/usuario.service';
 
@@ -10,21 +10,31 @@ import { UsuarioService } from '../../services/usuario.service';
   templateUrl: './login-usuario.html',
   styleUrl: './login-usuario.css',
 })
-export class LoginUsuario {
+export class LoginUsuario implements OnInit {
   private router = inject(Router);
   private service = inject(UsuarioService);
+  private route = inject(ActivatedRoute);
 
   loginData = {
     email: '',
     senha: ''
   };
 
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      if (params['email'] && params['senha']) {
+        this.loginData.email = params['email'];
+        this.loginData.senha = params['senha'];
+        // this.fazerLogin(); // Descomente se quiser que entre automático sem clicar
+      }
+    });
+  }
+
   fazerLogin() {
     this.service.fazerLogin(this.loginData).subscribe({
       next: (resposta: any) => {
         sessionStorage.setItem('auth-token', resposta.token);
         sessionStorage.setItem('usuarioLogado', 'true');
-        sessionStorage.setItem('tipoUsuario', 'USUARIO');
         sessionStorage.setItem('nomeUsuario', resposta.nome);
         sessionStorage.setItem('tipoUsuario', 'USUARIO');
         sessionStorage.setItem('idUsuario', resposta.id);
