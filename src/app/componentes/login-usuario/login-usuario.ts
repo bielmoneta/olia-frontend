@@ -25,7 +25,6 @@ export class LoginUsuario implements OnInit {
       if (params['email'] && params['senha']) {
         this.loginData.email = params['email'];
         this.loginData.senha = params['senha'];
-        // this.fazerLogin(); // Descomente se quiser que entre automático sem clicar
       }
     });
   }
